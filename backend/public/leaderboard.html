@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+  <title>Leaderboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Smash Ultimate Leaderboard</h1>
+
+  <nav>
+  <a href="index.html">Home</a> |
+  <a href="leaderboard.html">Leaderboard</a> |
+  <a href="players.html">Players</a>
+  </nav>
+
+  <table border="1" cellpadding="6">
+    <thead>
+      <tr>
+        <th>Rank</th>
+        <th>Player</th>
+        <th>Points</th>
+      </tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+  </table>
+
+  <script>
+    async function loadLeaderboard() {
+      const res = await fetch("/leaderboard?season=2025");
+      const data = await res.json();
+
+      const tbody = document.getElementById("tbody");
+
+      for (const row of data.leaderboard) {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${row.rank}</td>
+          <td>${row.tag}</td>
+          <td>${row.points}</td>
+        `;
+        tbody.appendChild(tr);
+      }
+    }
+
+    loadLeaderboard(); // runs when page loads
+  </script>
+</body>
+</html>

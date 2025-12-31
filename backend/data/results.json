@@ -1,0 +1,1407 @@
+[
+  {
+    "playerId": "p_hurt",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 1
+  },
+  {
+    "playerId": "p_cola",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 2
+  },
+  {
+    "playerId": "p_zomba",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 3
+  },
+  {
+    "playerId": "p_shuton",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 4
+  },
+  {
+    "playerId": "p_tea",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 5
+  },
+  {
+    "playerId": "p_luugi",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 5
+  },
+  {
+    "playerId": "p_miya",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 7
+  },
+  {
+    "playerId": "p_tweek",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 7
+  },
+  {
+    "playerId": "p_lima",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 9
+  },
+  {
+    "playerId": "p_kola",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 9
+  },
+  {
+    "playerId": "p_glutonny",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 9
+  },
+  {
+    "playerId": "p_beastmodepaul",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 9
+  },
+  {
+    "playerId": "p_shinymark",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 13
+  },
+  {
+    "playerId": "p_ken",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 13
+  },
+  {
+    "playerId": "p_umeki",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 13
+  },
+  {
+    "playerId": "p_bassmage",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 13
+  },
+  {
+    "playerId": "p_sparg0",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 17
+  },
+  {
+    "playerId": "p_sonix",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 17
+  },
+  {
+    "playerId": "p_light",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 17
+  },
+  {
+    "playerId": "p_player",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 17
+  },
+  {
+    "playerId": "p_tg",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 17
+  },
+  {
+    "playerId": "p_jogibu",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 17
+  },
+  {
+    "playerId": "p_kurama",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 17
+  },
+  {
+    "playerId": "p_m_pop0",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 17
+  },
+  {
+    "playerId": "p_player_2",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 25
+  },
+  {
+    "playerId": "p_onin",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 25
+  },
+  {
+    "playerId": "p_lui",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 25
+  },
+  {
+    "playerId": "p_sisqui",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 25
+  },
+  {
+    "playerId": "p_taikei",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 25
+  },
+  {
+    "playerId": "p_hero",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 25
+  },
+  {
+    "playerId": "p_anthonyisntcool",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 25
+  },
+  {
+    "playerId": "p_u",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 25
+  },
+  {
+    "playerId": "p_cr_pe_sal_e",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 33
+  },
+  {
+    "playerId": "p_raflow",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 33
+  },
+  {
+    "playerId": "p_kaninabe",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 33
+  },
+  {
+    "playerId": "p_dabuz",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 33
+  },
+  {
+    "playerId": "p_apollokage",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 33
+  },
+  {
+    "playerId": "p_h_o_mild_na_h_o",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 33
+  },
+  {
+    "playerId": "p_gackt",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 33
+  },
+  {
+    "playerId": "p_kid",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 33
+  },
+  {
+    "playerId": "p_yoda_cage",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 33
+  },
+  {
+    "playerId": "p_dany",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 33
+  },
+  {
+    "playerId": "p_player_3",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 33
+  },
+  {
+    "playerId": "p_jaredisking1",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 33
+  },
+  {
+    "playerId": "p_player_4",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 33
+  },
+  {
+    "playerId": "p_kiyarash",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 33
+  },
+  {
+    "playerId": "p_widara",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 33
+  },
+  {
+    "playerId": "p_ven",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 33
+  },
+  {
+    "playerId": "p_latio",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 49
+  },
+  {
+    "playerId": "p_cosmos",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 49
+  },
+  {
+    "playerId": "p_mkbigboss",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 49
+  },
+  {
+    "playerId": "p_yone_pi",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 49
+  },
+  {
+    "playerId": "p_rugal",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 49
+  },
+  {
+    "playerId": "p_goblin",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 49
+  },
+  {
+    "playerId": "p_d",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 49
+  },
+  {
+    "playerId": "p_pharaoh",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 49
+  },
+  {
+    "playerId": "p_peppa",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 49
+  },
+  {
+    "playerId": "p_eko",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 49
+  },
+  {
+    "playerId": "p_smirk",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 49
+  },
+  {
+    "playerId": "p_carriedbyjudicus",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 49
+  },
+  {
+    "playerId": "p_mfa",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 49
+  },
+  {
+    "playerId": "p_vendetta",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 49
+  },
+  {
+    "playerId": "p_ludo",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 49
+  },
+  {
+    "playerId": "p_yonni",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 49
+  },
+  {
+    "playerId": "p_riddles",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_monteantlers",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_mokumoku",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_quinn",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_nessboy12",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_mr_e",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_jdv",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_marvelous_marco",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_beastly",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_modzai",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_colorondo8",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_x_avier",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_parma_jawn",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_shoe",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_andrik",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_osh9",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_ikan",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_spritzy",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_apple_reviewer",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_lammers44",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_shine",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_risktkr",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_joel_o",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_charlie_d_ecember",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_blas",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_ojwaddler",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_tohru",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_lusion",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_shai",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_blueka",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_blane",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_omnilax",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_dtier",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_ponflex",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_ukit",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_nexus",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_fd",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_saboten",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_era",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_demon99",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_mvd",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_sparkle",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_abi",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_adrian",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_puresalt",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_temporaryplan",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_yrneh",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_sticccy",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_trim",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_ledsit",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_the_middle_mega_falink",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_nazura",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_player_5",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_twan",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_grapezard_x",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_reindeermnk",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_nationwide",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_mayor_of_lebronto_canada",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_kai_mystic",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_champagne",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_jimrude",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_ylissean",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_maxx",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_vermillion",
+    "tournamentId": "t_genesis_x2_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_miya",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 2
+  },
+  {
+    "playerId": "p_hurt",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 3
+  },
+  {
+    "playerId": "p_cola",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 4
+  },
+  {
+    "playerId": "p_tea",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 5
+  },
+  {
+    "playerId": "p_shuton",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 13
+  },
+  {
+    "playerId": "p_gackt",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 13
+  },
+  {
+    "playerId": "p_taikei",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 17
+  },
+  {
+    "playerId": "p_ken",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 17
+  },
+  {
+    "playerId": "p_player_2",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 17
+  },
+  {
+    "playerId": "p_player",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 25
+  },
+  {
+    "playerId": "p_h_o_mild_na_h_o",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 25
+  },
+  {
+    "playerId": "p_yone_pi",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 33
+  },
+  {
+    "playerId": "p_saboten",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_tg",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_u",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_player_6",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 1
+  },
+  {
+    "playerId": "p_shirayuki",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 5
+  },
+  {
+    "playerId": "p_mkleo",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 7
+  },
+  {
+    "playerId": "p_asimo",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 7
+  },
+  {
+    "playerId": "p_masa",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 9
+  },
+  {
+    "playerId": "p_player_7",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 9
+  },
+  {
+    "playerId": "p_yoshidora",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 25
+  },
+  {
+    "playerId": "p_m0tsunabe",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 49
+  },
+  {
+    "playerId": "p_leaf",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 9
+  },
+  {
+    "playerId": "p_uame",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 9
+  },
+  {
+    "playerId": "p_player_8",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 13
+  },
+  {
+    "playerId": "p_player_9",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 13
+  },
+  {
+    "playerId": "p_tameigo_okpg",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 17
+  },
+  {
+    "playerId": "p_neo",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 17
+  },
+  {
+    "playerId": "p_yaura",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 17
+  },
+  {
+    "playerId": "p_sin",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 17
+  },
+  {
+    "playerId": "p_knb",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 17
+  },
+  {
+    "playerId": "p_player_10",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 25
+  },
+  {
+    "playerId": "p_player_11",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 25
+  },
+  {
+    "playerId": "p_kept",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 25
+  },
+  {
+    "playerId": "p_player_12",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 25
+  },
+  {
+    "playerId": "p_player_13",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 25
+  },
+  {
+    "playerId": "p_t0atti",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 33
+  },
+  {
+    "playerId": "p_player_14",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 33
+  },
+  {
+    "playerId": "p_player_15",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 33
+  },
+  {
+    "playerId": "p_nano",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 33
+  },
+  {
+    "playerId": "p_mark",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 33
+  },
+  {
+    "playerId": "p_player_16",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 33
+  },
+  {
+    "playerId": "p_yuzu",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 33
+  },
+  {
+    "playerId": "p_shion",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 33
+  },
+  {
+    "playerId": "p_player_17",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 33
+  },
+  {
+    "playerId": "p_player_18",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 33
+  },
+  {
+    "playerId": "p_player_19",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 33
+  },
+  {
+    "playerId": "p_player_20",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 33
+  },
+  {
+    "playerId": "p_player_21",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 33
+  },
+  {
+    "playerId": "p_player_22",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 33
+  },
+  {
+    "playerId": "p_player_23",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 33
+  },
+  {
+    "playerId": "p_p",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 49
+  },
+  {
+    "playerId": "p_player_24",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 49
+  },
+  {
+    "playerId": "p_jy",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 49
+  },
+  {
+    "playerId": "p_lemozona",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 49
+  },
+  {
+    "playerId": "p_player_25",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 49
+  },
+  {
+    "playerId": "p_nao",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 49
+  },
+  {
+    "playerId": "p_reno",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 49
+  },
+  {
+    "playerId": "p_noi",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 49
+  },
+  {
+    "playerId": "p_player_26",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 49
+  },
+  {
+    "playerId": "p_marcos",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 49
+  },
+  {
+    "playerId": "p_ly",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 49
+  },
+  {
+    "playerId": "p_player_27",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 49
+  },
+  {
+    "playerId": "p_player_28",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 49
+  },
+  {
+    "playerId": "p_player_29",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 49
+  },
+  {
+    "playerId": "p_kameme",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 49
+  },
+  {
+    "playerId": "p_player_30",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_player_31",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_player_32",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_ezs",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_player_33",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_player_34",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_chicken",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_player_35",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_gachipi",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_masashi",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_player_36",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_player_37",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_player_38",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_player_39",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_player_40",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_tsubotsubo",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_player_41",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_chon",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_player_42",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_player_43",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_player_44",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_player_45",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_player_46",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_player_47",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_suinoko",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_te_shi",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_player_48",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_player_49",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_kome",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_ayalin",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_prand_grix",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_player_50",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_player_51",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_mao",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_player_52",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_ym",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_dom",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_player_53",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_mizaruna",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_player_54",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_player_55",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_player_56",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_okuu",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_die",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_player_57",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_player_58",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_repo",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_sssr",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_player_59",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_riteshia",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_yuzha",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_player_60",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_player_61",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_y",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_ike",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_player_62",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_player_63",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_paseriman",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_ryuk",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_player_64",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_zariq",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 97
+  },
+  {
+    "playerId": "p_mokumoku",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 129
+  },
+  {
+    "playerId": "p_player_3",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 129
+  },
+  {
+    "playerId": "p_umeki",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 129
+  },
+  {
+    "playerId": "p_ponflex",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 257
+  },
+  {
+    "playerId": "p_player_4",
+    "tournamentId": "t_kagaribi_14_2025",
+    "placement": 769
+  },
+  {
+    "playerId": "p_sonix",
+    "tournamentId": "t_Luminosity_Makes_Moves_Miami_2025",
+    "placement": 2
+  },
+  {
+    "playerId": "p_zomba",
+    "tournamentId": "t_Luminosity_Makes_Moves_Miami_2025",
+    "placement": 4
+  },
+  {
+    "playerId": "p_kola",
+    "tournamentId": "t_Luminosity_Makes_Moves_Miami_2025",
+    "placement": 7
+  },
+  {
+    "playerId": "p_apollokage",
+    "tournamentId": "t_Luminosity_Makes_Moves_Miami_2025",
+    "placement": 7
+  },
+  {
+    "playerId": "p_shinymark",
+    "tournamentId": "t_Luminosity_Makes_Moves_Miami_2025",
+    "placement": 9
+  },
+  {
+    "playerId": "p_monteantlers",
+    "tournamentId": "t_Luminosity_Makes_Moves_Miami_2025",
+    "placement": 9
+  },
+  {
+    "playerId": "p_ikan",
+    "tournamentId": "t_Luminosity_Makes_Moves_Miami_2025",
+    "placement": 25
+  },
+  {
+    "playerId": "p_mvd",
+    "tournamentId": "t_Luminosity_Makes_Moves_Miami_2025",
+    "placement": 33
+  },
+  {
+    "playerId": "p_goblin",
+    "tournamentId": "t_Luminosity_Makes_Moves_Miami_2025",
+    "placement": 33
+  },
+  {
+    "playerId": "p_anthonyisntcool",
+    "tournamentId": "t_Luminosity_Makes_Moves_Miami_2025",
+    "placement": 33
+  },
+  {
+    "playerId": "p_sticccy",
+    "tournamentId": "t_Luminosity_Makes_Moves_Miami_2025",
+    "placement": 49
+  },
+  {
+    "playerId": "p_nexus",
+    "tournamentId": "t_Luminosity_Makes_Moves_Miami_2025",
+    "placement": 49
+  },
+  {
+    "playerId": "p_risktkr",
+    "tournamentId": "t_Luminosity_Makes_Moves_Miami_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_temporaryplan",
+    "tournamentId": "t_Luminosity_Makes_Moves_Miami_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_pharaoh",
+    "tournamentId": "t_Luminosity_Makes_Moves_Miami_2025",
+    "placement": 65
+  },
+  {
+    "playerId": "p_omnilax",
+    "tournamentId": "t_Luminosity_Makes_Moves_Miami_2025",
+    "placement": 193
+  },
+  {
+    "playerId": "p_lui",
+    "tournamentId": "t_Luminosity_Makes_Moves_Miami_2025",
+    "placement": 193
+  },
+  {
+    "playerId": "p_mkleo",
+    "tournamentId": "t_Posada_Gamer_2025",
+    "placement": 1
+  },
+  {
+    "playerId": "p_andrik",
+    "tournamentId": "t_Posada_Gamer_2025",
+    "placement": 5
+  },
+  {
+    "playerId": "p_monteantlers",
+    "tournamentId": "t_Posada_Gamer_2025",
+    "placement": 5
+  }
+]

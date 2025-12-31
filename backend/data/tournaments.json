@@ -1,0 +1,38 @@
+[
+  {
+    "tournamentId": "t_mainstage_2025",
+    "season": 2025,
+    "tier": "P",
+    "name": "Mainstage"
+  },
+  {
+    "tournamentId": "t_lmbm_2025",
+    "season": 2025,
+    "tier": "Major",
+    "name": "LMBM"
+  },
+  {
+    "tournamentId": "t_genesis_x2_2025",
+    "season": 2025,
+    "tier": "P",
+    "name": "GENESIS X2"
+  },
+  {
+    "tournamentId": "t_kagaribi_14_2025",
+    "season": 2025,
+    "tier": "P",
+    "name": "シングルス / Singles"
+  },
+  {
+    "tournamentId": "t_Luminosity_Makes_Moves_Miami_2025",
+    "season": 2025,
+    "tier": "Major",
+    "name": "Luminosity Makes Moves Miami 2025"
+  },
+  {
+    "tournamentId": "t_Posada_Gamer_2025",
+    "season": 2025,
+    "tier": "B",
+    "name": "Posada Gamer 2025"
+  }
+]

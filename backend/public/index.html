@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Smash Rankings</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <nav>
+    <a href="index.html">Home</a> |
+    <a href="leaderboard.html">Leaderboard</a> |
+    <a href="players.html">Players</a>
+  </nav>
+
+  <!-- HOME -->
+  <section id="page-home">
+    <h1>My Smash Website</h1>
+    <p>This is my first test page for a Smash Ultimate ranking site.</p>
+  </section>
+
+  <!-- LEADERBOARD -->
+  <section id="page-leaderboard" style="display:none;">
+    <h1>Smash Ultimate Leaderboard</h1>
+
+    <label>
+      Season:
+      <select id="seasonSelect">
+        <option value="2025" selected>2025</option>
+      </select>
+    </label>
+
+    <table id="leaderboard" border="1" cellpadding="6">
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Player</th>
+          <th>Region</th>
+          <th>Points</th>
+        </tr>
+      </thead>
+      <tbody id="leaderboard-body"></tbody>
+    </table>
+  </section>
+
+  <!-- PLAYERS -->
+  <section id="page-players" style="display:none;">
+    <h1>Players</h1>
+    <div id="players-list">Loading...</div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Import</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav>
+    <a href="index.html">Home</a> |
+    <a href="leaderboard.html">Leaderboard</a> |
+    <a href="players.html">Players</a> |
+    <a href="admin.html">Admin</a>
+  </nav>
+
+  <h1>Import from start.gg</h1>
+
+  <div>
+    <p>Paste tournament link (events page is fine):</p>
+    <input id="url" style="width:640px; padding:8px;"
+      value="https://www.start.gg/tournament/14-kagaribi-14-8/events" />
+    <button id="btnLoad">Load Events</button>
+  </div>
+
+  <div style="margin-top:12px;">
+    <p>Tournament ID (your internal ID like <code>t_kagaribi_14_2025</code>):</p>
+    <input id="tournamentId" style="width:320px; padding:8px;" />
+  </div>
+
+  <div style="margin-top:12px;">
+  <p>Season:</p>
+  <input id="season" style="width:120px; padding:8px;" value="2025" />
+</div>
+
+<div style="margin-top:12px;">
+  <p>Tier:</p>
+  <select id="tier" style="width:180px; padding:8px;">
+    <option value="P">P</option>
+    <option value="Major">Major</option>
+    <option value="A">A</option>
+    <option value="B">B</option>
+    <option value="Local">Local</option>
+  </select>
+</div>
+
+<div style="margin-top:12px;">
+  <p>Tournament Name:</p>
+  <input id="tournamentName" style="width:420px; padding:8px;" placeholder="Kagaribi 14" />
+</div>
+
+  <div style="margin-top:12px;">
+    <p>Pick event:</p>
+    <select id="eventSelect" style="width:640px; padding:8px;"></select>
+  </div>
+
+  <div style="margin-top:12px;">
+    <p>Admin Key:</p>
+    <input id="adminKey" style="width:320px; padding:8px;" placeholder="(from your .env)" />
+  </div>
+
+  <div style="margin-top:12px;">
+    <button id="btnImport">Import Event</button>
+    <div id="status" style="margin-top:10px;"></div>
+  </div>
+
+<script>
+const statusEl = document.getElementById("status");
+const eventSelect = document.getElementById("eventSelect");
+
+document.getElementById("btnLoad").onclick = async () => {
+  statusEl.textContent = "Loading events...";
+  eventSelect.innerHTML = "";
+
+  const url = document.getElementById("url").value.trim();
+  const res = await fetch(`/api/tournament-events?url=${encodeURIComponent(url)}`);
+  const data = await res.json();
+
+  if (!res.ok) {
+    statusEl.textContent = "Error: " + (data.error || res.status);
+    return;
+  }
+
+  statusEl.textContent = `Loaded: ${data.tournamentName || data.tournamentSlug} (${data.events.length} events)`;
+
+  for (const e of data.events) {
+    const opt = document.createElement("option");
+    opt.value = e.slug; // event slug: tournament/.../event/...
+    opt.textContent = `${e.name} — ${e.slug}`;
+    eventSelect.appendChild(opt);
+  }
+};
+
+document.getElementById("btnImport").onclick = async () => {
+  const tournamentId = document.getElementById("tournamentId").value.trim();
+  const season = Number(document.getElementById("season").value.trim());
+  const tier = document.getElementById("tier").value;
+  const tournamentName = document.getElementById("tournamentName").value.trim();
+
+  const adminKey = document.getElementById("adminKey").value.trim();
+  const eventSlug = eventSelect.value;
+
+  if (!tournamentId) return alert("Enter tournamentId");
+  if (!season) return alert("Enter season");
+  if (!tier) return alert("Select tier");
+  if (!adminKey) return alert("Enter admin key");
+  if (!eventSlug) return alert("Load and select an event first");
+
+  statusEl.textContent = "Importing...";
+
+  const res = await fetch("/api/import-event", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "X-Admin-Key": adminKey
+    },
+    body: JSON.stringify({
+      eventSlug,
+      tournamentId,
+      season,
+      tier,
+      tournamentName
+    })
+  });
+
+  const data = await res.json();
+  if (!res.ok) {
+    statusEl.textContent = "Error: " + (data.error || res.status);
+    return;
+  }
+
+  statusEl.textContent =
+    `✅ Imported ${data.eventName}. ` +
+    `appended=${data.appended}, ` +
+    `unmapped=${data.unmappedCount}. ` +
+    `tournament ${data.tournamentUpsert?.added ? "added" : "updated"}.`;
+};
+</script>
+</body>
+</html>

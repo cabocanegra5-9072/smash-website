@@ -31262,5 +31262,85 @@
     "startgg": {
       "playerId": 3192997
     }
+  },
+  {
+    "playerId": "p_ken",
+    "tournamentId": "t_845785",
+    "placement": 1
+  },
+  {
+    "playerId": "p_yone_pi",
+    "tournamentId": "t_845785",
+    "placement": 2
+  },
+  {
+    "playerId": "p_mkleo",
+    "tournamentId": "t_845785",
+    "placement": 3
+  },
+  {
+    "playerId": "p_kept",
+    "tournamentId": "t_845785",
+    "placement": 4
+  },
+  {
+    "playerId": "p_asimo",
+    "tournamentId": "t_845785",
+    "placement": 5
+  },
+  {
+    "playerId": "p_chon",
+    "tournamentId": "t_845785",
+    "placement": 5
+  },
+  {
+    "playerId": "p_gachipi",
+    "tournamentId": "t_845785",
+    "placement": 7
+  },
+  {
+    "playerId": "p_okpg",
+    "tournamentId": "t_845785",
+    "placement": 7
+  },
+  {
+    "playerId": "p_player_38",
+    "tournamentId": "t_845785",
+    "placement": 9
+  },
+  {
+    "playerId": "p_u",
+    "tournamentId": "t_845785",
+    "placement": 9
+  },
+  {
+    "playerId": "p_player_47",
+    "tournamentId": "t_845785",
+    "placement": 9
+  },
+  {
+    "playerId": "p_player_21",
+    "tournamentId": "t_845785",
+    "placement": 9
+  },
+  {
+    "playerId": "p_ponflex",
+    "tournamentId": "t_845785",
+    "placement": 13
+  },
+  {
+    "playerId": "p_paseriman",
+    "tournamentId": "t_845785",
+    "placement": 13
+  },
+  {
+    "playerId": "p_h_o_mild_na_h_o",
+    "tournamentId": "t_845785",
+    "placement": 13
+  },
+  {
+    "playerId": "p_pew",
+    "tournamentId": "t_845785",
+    "placement": 13
   }
 ]

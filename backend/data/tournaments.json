@@ -43,5 +43,12 @@
     "tier": "P",
     "name": "九龍-KOWLOON-#16",
     "eventSlug": "tournament/kowloon-16/event/kowloon_sp"
+  },
+  {
+    "tournamentId": "t_845785",
+    "season": 2025,
+    "tier": "B",
+    "name": "Cafeteria Cup: Candy",
+    "eventSlug": "tournament/cafeteria-cup-candy/event/cafeteria-cup-honey-pot-singles-1v1"
   }
 ]

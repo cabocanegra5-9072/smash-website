@@ -5,11 +5,35 @@ const path = require("path");
 
 dotenv.config();
 
+const DATA_DIR = path.join(__dirname, "data");
+fs.mkdirSync(DATA_DIR, { recursive: true });
+
 const app = express();
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
+app.get("/__which-server", (req, res) => {
+  res.json({ runningServerFile: __filename, dirname: __dirname });
+});
 
+app.get("/debug-paths", (req, res) => {
+  const rootDataDir = path.join(__dirname, "..", "data");
+  const backendDataDir = path.join(__dirname, "data");
+
+  res.json({
+    runningServerFile: __filename,
+    rootPlayers: path.join(rootDataDir, "players.json"),
+    rootPlayersExists: fs.existsSync(path.join(rootDataDir, "players.json")),
+    rootTournaments: path.join(rootDataDir, "tournaments.json"),
+    rootTournamentsExists: fs.existsSync(path.join(rootDataDir, "tournaments.json")),
+    backendPlayers: path.join(backendDataDir, "players.json"),
+    backendPlayersExists: fs.existsSync(path.join(backendDataDir, "players.json")),
+    backendTournaments: path.join(backendDataDir, "tournaments.json"),
+    backendTournamentsExists: fs.existsSync(path.join(backendDataDir, "tournaments.json")),
+  });
+});
+
+console.log("RUNNING SERVER FILE:", __filename);
 console.log("✅ server.js started");
 console.log("PORT from .env =", process.env.PORT);
 console.log("Has STARTGG_TOKEN =", Boolean(process.env.STARTGG_TOKEN));
@@ -44,6 +68,19 @@ async function startggQuery(query, variables) {
 const GET_EVENT = `
   query GetEvent($slug: String!) {
     event(slug: $slug) { id name }
+  }
+`;
+
+const GET_EVENT_WITH_TOURNAMENT = `
+  query GetEventWithTournament($slug: String!) {
+    event(slug: $slug) {
+      id
+      name
+      tournament {
+        id
+        name
+      }
+    }
   }
 `;
 
@@ -129,8 +166,14 @@ app.get("/export-playerids", async (req, res) => {
 });
 
 function loadPlayersFile() {
-  const playersPath = path.join(__dirname, "..", "data", "players.json");
-  const raw = fs.readFileSync(playersPath, "utf-8");
+  const playersPath = path.join(DATA_DIR, "players.json");
+
+  // ✅ Don't crash the whole site if file is missing in production
+  if (!fs.existsSync(playersPath)) return [];
+
+  const raw = fs.readFileSync(playersPath, "utf-8").trim();
+  if (!raw) return [];
+
   return JSON.parse(raw);
 }
 
@@ -225,7 +268,7 @@ app.get("/append-results", async (req, res) => {
     const nodes = await fetchAllStandings(eventId);
 
     // Load mapping from players.json
-    const playersPath = path.join(__dirname, "..", "data", "players.json");
+    const playersPath = path.join(DATA_DIR, "players.json");
     const players = JSON.parse(fs.readFileSync(playersPath, "utf-8"));
     const lookup = new Map();
     for (const p of players) {
@@ -265,7 +308,7 @@ app.get("/append-results", async (req, res) => {
     }
 
     // Append into results.json (dedupe by playerId+tournamentId)
-    const resultsPath = path.join(__dirname, "..", "data", "results.json");
+    const resultsPath = path.join(DATA_DIR, "results.json");
     const existing = loadJsonArray(resultsPath);
 
     const key = (r) => `${r.playerId}__${r.tournamentId}`;
@@ -309,7 +352,7 @@ app.get("/unmapped", async (req, res) => {
 
     const nodes = await fetchAllStandings(eventId);
 
-    const playersPath = path.join(__dirname, "..", "data", "players.json");
+    const playersPath = path.join(DATA_DIR, "players.json");
     const players = JSON.parse(fs.readFileSync(playersPath, "utf-8"));
 
     const lookup = new Map();
@@ -352,7 +395,7 @@ app.post("/add-player", (req, res) => {
     if (!startggPlayerId) return res.status(400).json({ error: "Missing startggPlayerId" });
     if (!tag) return res.status(400).json({ error: "Missing tag" });
 
-    const playersPath = path.join(__dirname, "..", "data", "players.json");
+    const playersPath = path.join(DATA_DIR, "players.json");
     const players = JSON.parse(fs.readFileSync(playersPath, "utf-8"));
 
     // Prevent duplicates
@@ -544,7 +587,7 @@ app.get("/reimport-results", async (req, res) => {
     if (!tournamentId) return res.status(400).json({ error: "Missing ?tournamentId=" });
 
     // 1) Remove existing results for that tournamentId
-    const resultsPath = path.join(__dirname, "..", "data", "results.json");
+    const resultsPath = path.join(DATA_DIR, "results.json");
     const existing = loadJsonArray(resultsPath);
     const before = existing.length;
 
@@ -561,7 +604,7 @@ app.get("/reimport-results", async (req, res) => {
     const nodes = await fetchAllStandings(eventId);
 
     // Load mapping from players.json
-    const playersPath = path.join(__dirname, "..", "data", "players.json");
+    const playersPath = path.join(DATA_DIR, "players.json");
     const players = JSON.parse(fs.readFileSync(playersPath, "utf-8"));
     const lookup = new Map();
     for (const p of players) {
@@ -632,15 +675,17 @@ app.get("/reimport-results", async (req, res) => {
 });
 
 function loadTournamentsFile() {
-  const tournamentsPath = path.join(__dirname, "..", "data", "tournaments.json");
-  if (!fs.existsSync(tournamentsPath)) return [];
-  return JSON.parse(fs.readFileSync(tournamentsPath, "utf-8"));
+  const p = path.join(DATA_DIR, "tournaments.json");
+  if (!fs.existsSync(p)) return [];
+  const raw = fs.readFileSync(p, "utf-8").trim();
+  return raw ? JSON.parse(raw) : [];
 }
 
 function loadResultsFile() {
-  const resultsPath = path.join(__dirname, "..", "data", "results.json");
-  if (!fs.existsSync(resultsPath)) return [];
-  return JSON.parse(fs.readFileSync(resultsPath, "utf-8"));
+  const p = path.join(DATA_DIR, "results.json");
+  if (!fs.existsSync(p)) return [];
+  const raw = fs.readFileSync(p, "utf-8").trim();
+  return raw ? JSON.parse(raw) : [];
 }
 
 /**
@@ -698,12 +743,21 @@ function tierMultiplier(tier) {
   return multipliers[t] ?? 0.5; // default mid-tier
 }
 
+let RESULTS_CACHE = [];
+let CACHE_STATUS = {
+  rebuilding: false,
+  lastRebuildAt: null,
+  lastError: null,
+  tournamentsProcessed: 0,
+  resultsCount: 0
+};
+
 app.get("/leaderboard", (req, res) => {
   try {
     const season = req.query.season ? Number(req.query.season) : null;
 
     const players = loadPlayersFile();
-    const results = loadResultsFile();
+    const results = RESULTS_CACHE;
     const tournaments = loadTournamentsFile();
 
     // Indexes for fast joins
@@ -805,16 +859,17 @@ app.get("/debug-data", (req, res) => {
   }
 });
 
-app.get("/players", (req, res) => {
+app.get("/debug-tournaments", (req, res) => {
   try {
-    const players = loadPlayersFile();
-
-    // Optional: sort by tag
-    players.sort((a, b) => String(a.tag).localeCompare(String(b.tag)));
-
-    res.json({ count: players.length, players });
-  } catch (err) {
-    res.status(500).json({ error: String(err) });
+    const file = path.join(DATA_DIR, "tournaments.json");
+    const tournaments = loadJsonArray(file);
+    res.json({
+      file,
+      count: tournaments.length,
+      last: tournaments[tournaments.length - 1] || null
+    });
+  } catch (e) {
+    res.status(500).json({ error: String(e) });
   }
 });
 
@@ -871,19 +926,20 @@ app.post("/api/import-event", async (req, res) => {
   try {
     if (!requireAdmin(req)) return res.status(401).json({ error: "Unauthorized" });
 
-    const { eventSlug, tournamentId, season, tier, tournamentName } = req.body || {};
+    const { eventSlug, season, tier } = req.body || {};
     if (!eventSlug) return res.status(400).json({ error: "Missing eventSlug" });
-    if (!tournamentId) return res.status(400).json({ error: "Missing tournamentId" });
     if (!season) return res.status(400).json({ error: "Missing season" });
     if (!tier) return res.status(400).json({ error: "Missing tier" });
 
     // 1) get eventId from event slug
-    const eventData = await startggQuery(GET_EVENT, { slug: eventSlug });
+    const eventData = await startggQuery(GET_EVENT_WITH_TOURNAMENT, { slug: eventSlug });
     const eventId = eventData.event.id;
 
+    // AUTO tournament info
+    const tournamentId = "t_" + eventData.event.tournament.id;
     const safeName =
-      (tournamentName && tournamentName.trim()) ||
-      eventData?.event?.name ||
+      eventData.event.tournament.name ||
+      eventData.event.name ||
       tournamentId;
 
     // ✅ auto-add/update tournaments.json
@@ -891,7 +947,8 @@ app.post("/api/import-event", async (req, res) => {
       tournamentId,
       season,
       tier,
-      name: safeName
+      name: safeName,
+      eventSlug: eventSlug
     });
 
     // 2) standings
@@ -935,7 +992,7 @@ app.post("/api/import-event", async (req, res) => {
     }
 
     // 4) append to results.json (dedupe by playerId+tournamentId)
-    const resultsPath = path.join(__dirname, "..", "data", "results.json");
+    const resultsPath = path.join(DATA_DIR, "results.json");
     const existing = loadJsonArray(resultsPath);
     const key = (r) => `${r.playerId}__${r.tournamentId}`;
     const keys = new Set(existing.map(key));
@@ -950,6 +1007,8 @@ app.post("/api/import-event", async (req, res) => {
     }
 
     writeJsonPretty(resultsPath, existing);
+
+    await rebuildResultsCache();
 
     res.json({
   ok: true,
@@ -979,8 +1038,69 @@ app.post("/api/import-event", async (req, res) => {
   }
 });
 
-function upsertTournament({ tournamentId, season, tier, name }) {
-  const tournamentsPath = path.join(__dirname, "..", "data", "tournaments.json");
+async function rebuildResultsCache() {
+  if (CACHE_STATUS.rebuilding) return;
+
+  CACHE_STATUS.rebuilding = true;
+  CACHE_STATUS.lastError = null;
+  CACHE_STATUS.tournamentsProcessed = 0;
+
+  try {
+    const tournaments = loadTournamentsFile();
+
+    const built = [];
+
+    for (const t of tournaments) {
+      if (!t.eventSlug) continue; // can't rebuild without slug
+
+      // 1) get eventId from slug
+      const eventData = await startggQuery(GET_EVENT, { slug: t.eventSlug });
+      const eventId = eventData.event.id;
+
+      // 2) fetch ALL standings (paginated)
+      const nodes = await fetchAllStandings(eventId);
+
+      // 3) map standings -> your internal playerId results
+      const players = loadPlayersFile();
+      const lookup = new Map();
+      for (const p of players) {
+        const sid = p?.startgg?.playerId;
+        if (sid != null) lookup.set(Number(sid), p.playerId);
+      }
+
+      for (const n of nodes) {
+        const entrant = n.entrant;
+        const firstParticipant = entrant?.participants?.[0];
+        const player = firstParticipant?.player;
+
+        const startggPlayerId = player?.id ?? null;
+        const mappedPlayerId =
+          startggPlayerId != null ? lookup.get(Number(startggPlayerId)) : null;
+
+        if (mappedPlayerId) {
+          built.push({
+            playerId: mappedPlayerId,
+            tournamentId: t.tournamentId,
+            placement: Number(n.placement)
+          });
+        }
+      }
+
+      CACHE_STATUS.tournamentsProcessed++;
+    }
+
+    RESULTS_CACHE = built;
+    CACHE_STATUS.resultsCount = built.length;
+    CACHE_STATUS.lastRebuildAt = new Date().toISOString();
+  } catch (e) {
+    CACHE_STATUS.lastError = String(e);
+  } finally {
+    CACHE_STATUS.rebuilding = false;
+  }
+}
+
+function upsertTournament({ tournamentId, season, tier, name, eventSlug }) {
+  const tournamentsPath = path.join(DATA_DIR, "tournaments.json");
   const tournaments = loadJsonArray(tournamentsPath);
 
   const idx = tournaments.findIndex((t) => t.tournamentId === tournamentId);
@@ -989,7 +1109,8 @@ function upsertTournament({ tournamentId, season, tier, name }) {
     tournamentId,
     season: Number(season),
     tier: tier,
-    name: name
+    name: name,
+    eventSlug
   };
 
   if (idx === -1) {
@@ -1028,6 +1149,49 @@ async function fetchAllStandings(eventId) {
 
   return all;
 }
+
+app.get(["/players", "/api/players"], (req, res) => {
+  try {
+    const players = loadPlayersFile();
+    // optional: sort by tag
+    players.sort((a, b) => String(a.tag || "").localeCompare(String(b.tag || "")));
+    res.json({ ok: true, count: players.length, players });
+  } catch (err) {
+    res.status(500).json({ error: String(err) });
+  }
+});
+
+app.get("/cache-status", (req, res) => {
+  res.json({ ok: true, cache: CACHE_STATUS, resultsCacheCount: RESULTS_CACHE.length });
+});
+
+app.post("/admin/rebuild-cache", async (req, res) => {
+  try {
+    if (!requireAdmin(req)) return res.status(401).json({ error: "Unauthorized" });
+    await rebuildResultsCache();
+    res.json({ ok: true, cache: CACHE_STATUS, resultsCacheCount: RESULTS_CACHE.length });
+  } catch (err) {
+    res.status(500).json({ error: String(err) });
+  }
+});
+
+app.get("/debug-paths", (req, res) => {
+  const rootDataDir = path.join(__dirname, "..", "data");
+  const backendDataDir = path.join(__dirname, "data");
+
+  const rootT = path.join(rootDataDir, "tournaments.json");
+  const backT = path.join(backendDataDir, "tournaments.json");
+
+  res.json({
+    __dirname,
+    rootTournamentsPath: rootT,
+    rootTournamentsExists: fs.existsSync(rootT),
+    backendTournamentsPath: backT,
+    backendTournamentsExists: fs.existsSync(backT),
+  });
+});
+
+rebuildResultsCache();
 
 const port = Number(process.env.PORT) || 3001;
 app.listen(port, () => {

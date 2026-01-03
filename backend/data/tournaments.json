@@ -15,13 +15,15 @@
     "tournamentId": "t_genesis_x2_2025",
     "season": 2025,
     "tier": "P",
-    "name": "GENESIS X2"
+    "name": "GENESIS X2",
+    "eventSlug": "tournament/genesis-x2/event/ultimate-singles"
   },
   {
     "tournamentId": "t_kagaribi_14_2025",
     "season": 2025,
     "tier": "P",
-    "name": "シングルス / Singles"
+    "name": "シングルス / Singles",
+    "eventSlug": "tournament/14-kagaribi-14-8/event/singles"
   },
   {
     "tournamentId": "t_Luminosity_Makes_Moves_Miami_2025",
@@ -34,5 +36,12 @@
     "season": 2025,
     "tier": "B",
     "name": "Posada Gamer 2025"
+  },
+  {
+    "tournamentId": "t_767620",
+    "season": 2025,
+    "tier": "P",
+    "name": "九龍-KOWLOON-#16",
+    "eventSlug": "tournament/kowloon-16/event/kowloon_sp"
   }
 ]

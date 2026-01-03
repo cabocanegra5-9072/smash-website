@@ -67,7 +67,7 @@ async function initPlayersPage() {
 
   try {
     if (status) status.textContent = "Loading...";
-    const res = await fetch("/players");
+    const res = await fetch("/api/players");
     const data = await res.json();
     if (!res.ok) throw new Error(data.error || `HTTP ${res.status}`);
 

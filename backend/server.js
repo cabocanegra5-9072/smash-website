@@ -10,6 +10,12 @@ fs.mkdirSync(DATA_DIR, { recursive: true });
 
 const app = express();
 app.use(express.json());
+
+app.get("/admin.html", (req, res) => {
+  if (!requireAdmin(req)) return res.status(401).send("Unauthorized");
+  res.sendFile(path.join(__dirname, "public", "admin.html"));
+});
+
 app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/__which-server", (req, res) => {

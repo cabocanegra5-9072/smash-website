@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Super Smash Bros Ultimate</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .smash-title {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+    
+    .hero-section {
+      background: linear-gradient(180deg, #ffffff 0%, #f5f5f7 100%);
+    }
+    
+    .feature-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: #ffffff;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+    }
+    
+    nav {
+      backdrop-filter: blur(20px);
+      background: rgba(255, 255, 255, 0.8);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    
+    .smash-logo {
+      transition: transform 0.3s ease;
+    }
+    
+    .smash-logo:hover {
+      transform: scale(1.05);
+    }
+    
+    .cta-button {
+      transition: all 0.3s ease;
+    }
+    
+    .cta-button:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 16px rgba(151, 240, 159, 0.3);
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full">
+  <div id="app-wrapper" class="w-full h-full overflow-auto"><!-- Navigation -->
+   <nav class="w-full py-3 px-6 fixed top-0 left-0 z-50">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+     <div class="flex items-center gap-3"><!-- Smash Bros Logo -->
+      <svg class="smash-logo w-10 h-10" viewbox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="48" fill="#97F09F" /> <path d="M50 15L58 35L78 38L64 52L67 73L50 63L33 73L36 52L22 38L42 35L50 15Z" fill="white" /> <circle cx="50" cy="50" r="45" stroke="#1d1d1f" stroke-width="2" fill="none" />
+      </svg>
+      <h1 id="site-title" class="smash-title text-xl text-gray-900">Super Smash Bros Ultimate</h1>
+     </div>
+     <div class="flex gap-8"><a href="#fighters" class="text-sm text-gray-600 hover:text-gray-900 transition-colors">Fighters</a> <a href="#stages" class="text-sm text-gray-600 hover:text-gray-900 transition-colors">Stages</a> <a href="#news" class="text-sm text-gray-600 hover:text-gray-900 transition-colors">News</a>
+     </div>
+    </div>
+   </nav><!-- Hero Section -->
+   <section class="hero-section w-full pt-32 pb-20 px-6">
+    <div class="max-w-4xl mx-auto text-center">
+     <p id="tagline" class="text-sm font-medium mb-4" style="color: #97F09F;">Everyone is here!</p>
+     <h2 id="hero-heading" class="smash-title text-6xl mb-6 text-gray-900">Join the Ultimate Battle</h2>
+     <p id="hero-description" class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto font-light">Experience the biggest crossover fighting game with legendary characters from across the gaming universe</p><button id="cta-button" class="cta-button px-8 py-3 rounded-full font-medium text-white text-lg" style="background-color: #97F09F;"> Play Now </button>
+    </div>
+   </section><!-- Features Section -->
+   <section class="w-full py-20 px-6" style="background-color: #fbfbfd;">
+    <div class="max-w-7xl mx-auto">
+     <div class="grid grid-cols-1 md:grid-cols-3 gap-6"><!-- Feature 1 -->
+      <div class="feature-card p-8 rounded-3xl border border-gray-200">
+       <div class="w-14 h-14 rounded-2xl mb-6 flex items-center justify-center" style="background-color: #97F09F;">
+        <svg class="w-8 h-8" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L15 9L22 10L17 15L18 22L12 18L6 22L7 15L2 10L9 9L12 2Z" fill="white" />
+        </svg>
+       </div>
+       <h3 id="feature-1-title" class="smash-title text-2xl mb-3 text-gray-900">80+ Fighters</h3>
+       <p id="feature-1-desc" class="text-gray-600 font-light">Choose from a massive roster of legendary characters</p>
+      </div><!-- Feature 2 -->
+      <div class="feature-card p-8 rounded-3xl border border-gray-200">
+       <div class="w-14 h-14 rounded-2xl mb-6 flex items-center justify-center" style="background-color: #97F09F;">
+        <svg class="w-8 h-8" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="18" height="18" rx="3" fill="white" /> <circle cx="12" cy="12" r="3" fill="#97F09F" />
+        </svg>
+       </div>
+       <h3 id="feature-2-title" class="smash-title text-2xl mb-3 text-gray-900">100+ Stages</h3>
+       <p id="feature-2-desc" class="text-gray-600 font-light">Battle across iconic locations from gaming history</p>
+      </div><!-- Feature 3 -->
+      <div class="feature-card p-8 rounded-3xl border border-gray-200">
+       <div class="w-14 h-14 rounded-2xl mb-6 flex items-center justify-center" style="background-color: #97F09F;">
+        <svg class="w-8 h-8" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="8" fill="white" /> <path d="M12 4V12L16 14" stroke="#97F09F" stroke-width="2" stroke-linecap="round" fill="none" />
+        </svg>
+       </div>
+       <h3 id="feature-3-title" class="smash-title text-2xl mb-3 text-gray-900">Online Battles</h3>
+       <p id="feature-3-desc" class="text-gray-600 font-light">Compete with players worldwide in epic matches</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- Footer -->
+   <footer class="w-full py-8 px-6" style="background-color: #f5f5f7; border-top: 1px solid #d2d2d7;">
+    <div class="max-w-7xl mx-auto text-center">
+     <p class="text-sm text-gray-600">© 2024 Super Smash Bros Ultimate Fan Site</p>
+    </div>
+   </footer>
+  </div>
+  <script>
+    const defaultConfig = {
+      background_color: "#ffffff",
+      accent_color: "#97F09F",
+      text_color: "#1d1d1f",
+      secondary_text_color: "#6e6e73",
+      card_background: "#ffffff",
+      font_family: "Inter",
+      font_size: 16,
+      site_title: "Super Smash Bros Ultimate",
+      tagline: "Everyone is here!",
+      hero_heading: "Join the Ultimate Battle",
+      hero_description: "Experience the biggest crossover fighting game with legendary characters from across the gaming universe",
+      cta_button_text: "Play Now",
+      feature_1_title: "80+ Fighters",
+      feature_1_desc: "Choose from a massive roster of legendary characters",
+      feature_2_title: "100+ Stages",
+      feature_2_desc: "Battle across iconic locations from gaming history",
+      feature_3_title: "Online Battles",
+      feature_3_desc: "Compete with players worldwide in epic matches"
+    };
+
+    async function onConfigChange(config) {
+      const wrapper = document.getElementById('app-wrapper');
+      const nav = document.querySelector('nav');
+      const heroSection = document.querySelector('.hero-section');
+      const featuresSection = document.querySelector('section[style*="fbfbfd"]');
+      const footer = document.querySelector('footer');
+      
+      // Apply colors
+      wrapper.style.backgroundColor = config.background_color || defaultConfig.background_color;
+      heroSection.style.background = `linear-gradient(180deg, ${config.background_color || defaultConfig.background_color} 0%, #f5f5f7 100%)`;
+      
+      // Apply font
+      const customFont = config.font_family || defaultConfig.font_family;
+      const baseFontStack = 'Inter, -apple-system, BlinkMacSystemFont, sans-serif';
+      document.body.style.fontFamily = `${customFont}, ${baseFontStack}`;
+      
+      // Apply font size
+      const baseSize = config.font_size || defaultConfig.font_size;
+      document.getElementById('site-title').style.fontSize = `${baseSize * 1.25}px`;
+      document.getElementById('tagline').style.fontSize = `${baseSize * 0.875}px`;
+      document.getElementById('hero-heading').style.fontSize = `${baseSize * 3.75}px`;
+      document.getElementById('hero-description').style.fontSize = `${baseSize * 1.25}px`;
+      
+      // Update text content
+      document.getElementById('site-title').textContent = config.site_title || defaultConfig.site_title;
+      document.getElementById('tagline').textContent = config.tagline || defaultConfig.tagline;
+      document.getElementById('hero-heading').textContent = config.hero_heading || defaultConfig.hero_heading;
+      document.getElementById('hero-description').textContent = config.hero_description || defaultConfig.hero_description;
+      document.getElementById('cta-button').textContent = config.cta_button_text || defaultConfig.cta_button_text;
+      
+      document.getElementById('feature-1-title').textContent = config.feature_1_title || defaultConfig.feature_1_title;
+      document.getElementById('feature-1-desc').textContent = config.feature_1_desc || defaultConfig.feature_1_desc;
+      document.getElementById('feature-2-title').textContent = config.feature_2_title || defaultConfig.feature_2_title;
+      document.getElementById('feature-2-desc').textContent = config.feature_2_desc || defaultConfig.feature_2_desc;
+      document.getElementById('feature-3-title').textContent = config.feature_3_title || defaultConfig.feature_3_title;
+      document.getElementById('feature-3-desc').textContent = config.feature_3_desc || defaultConfig.feature_3_desc;
+      
+      // Apply accent color to elements
+      const accentColor = config.accent_color || defaultConfig.accent_color;
+      const textColor = config.text_color || defaultConfig.text_color;
+      const secondaryTextColor = config.secondary_text_color || defaultConfig.secondary_text_color;
+      
+      document.getElementById('tagline').style.color = accentColor;
+      document.getElementById('hero-heading').style.color = textColor;
+      document.getElementById('hero-description').style.color = secondaryTextColor;
+      document.getElementById('cta-button').style.backgroundColor = accentColor;
+      document.getElementById('site-title').style.color = textColor;
+      
+      // Update logo color
+      const logoCircle = document.querySelector('.smash-logo circle[fill="#97F09F"]');
+      if (logoCircle) {
+        logoCircle.setAttribute('fill', accentColor);
+      }
+      
+      // Update feature icons and text
+      const featureIcons = document.querySelectorAll('.feature-card > div[style*="background-color"]');
+      featureIcons.forEach(icon => {
+        icon.style.backgroundColor = accentColor;
+      });
+      
+      const featureTitles = document.querySelectorAll('.feature-card h3');
+      featureTitles.forEach(title => {
+        title.style.color = textColor;
+      });
+      
+      const featureDescs = document.querySelectorAll('.feature-card p');
+      featureDescs.forEach(desc => {
+        desc.style.color = secondaryTextColor;
+      });
+    }
+
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [
+          {
+            get: () => config.background_color || defaultConfig.background_color,
+            set: (value) => {
+              config.background_color = value;
+              window.elementSdk.setConfig({ background_color: value });
+            }
+          },
+          {
+            get: () => config.accent_color || defaultConfig.accent_color,
+            set: (value) => {
+              config.accent_color = value;
+              window.elementSdk.setConfig({ accent_color: value });
+            }
+          },
+          {
+            get: () => config.text_color || defaultConfig.text_color,
+            set: (value) => {
+              config.text_color = value;
+              window.elementSdk.setConfig({ text_color: value });
+            }
+          },
+          {
+            get: () => config.card_background || defaultConfig.card_background,
+            set: (value) => {
+              config.card_background = value;
+              window.elementSdk.setConfig({ card_background: value });
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: {
+          get: () => config.font_family || defaultConfig.font_family,
+          set: (value) => {
+            config.font_family = value;
+            window.elementSdk.setConfig({ font_family: value });
+          }
+        },
+        fontSizeable: {
+          get: () => config.font_size || defaultConfig.font_size,
+          set: (value) => {
+            config.font_size = value;
+            window.elementSdk.setConfig({ font_size: value });
+          }
+        }
+      };
+    }
+
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ["site_title", config.site_title || defaultConfig.site_title],
+        ["tagline", config.tagline || defaultConfig.tagline],
+        ["hero_heading", config.hero_heading || defaultConfig.hero_heading],
+        ["hero_description", config.hero_description || defaultConfig.hero_description],
+        ["cta_button_text", config.cta_button_text || defaultConfig.cta_button_text],
+        ["feature_1_title", config.feature_1_title || defaultConfig.feature_1_title],
+        ["feature_1_desc", config.feature_1_desc || defaultConfig.feature_1_desc],
+        ["feature_2_title", config.feature_2_title || defaultConfig.feature_2_title],
+        ["feature_2_desc", config.feature_2_desc || defaultConfig.feature_2_desc],
+        ["feature_3_title", config.feature_3_title || defaultConfig.feature_3_title],
+        ["feature_3_desc", config.feature_3_desc || defaultConfig.feature_3_desc]
+      ]);
+    }
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9b7ffd4ca240c3eb',t:'MTc2NzQxNzAyMy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

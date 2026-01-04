@@ -1,48 +1,77 @@
 <!doctype html>
-<html>
+<html lang="en" class="h-full">
 <head>
-  <title>Leaderboard</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leaderboard - Smash Rankings</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    html, body { height: 100%; margin: 0; padding: 0; background: linear-gradient(180deg,#ffffff 0%,#f5f5f7 100%); font-family:'Inter',sans-serif; }
+    .smash-title { font-weight: 700; letter-spacing: -0.5px; }
+    nav { backdrop-filter: blur(20px); background: rgba(255,255,255,0.8); border-bottom: 1px solid rgba(0,0,0,0.1); }
+    table { width: 100%; border-collapse: collapse; background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+    th { background: #97F09F; color: white; padding: 16px; text-align: left; font-weight: 600; }
+    td { padding: 14px 16px; border-bottom: 1px solid #f0f0f0; color: #333; }
+    tr:hover { background: #f9f9f9; }
+    tr:last-child td { border-bottom: none; }
+  </style>
 </head>
-<body>
-  <h1>Smash Ultimate Leaderboard</h1>
 
-  <nav>
-  <a href="index.html">Home</a> |
-  <a href="leaderboard.html">Leaderboard</a> |
-  <a href="players.html">Players</a>
-  </nav>
+<body class="h-full">
+  <div class="w-full h-full overflow-auto">
 
-  <table border="1" cellpadding="6">
-    <thead>
-      <tr>
-        <th>Rank</th>
-        <th>Player</th>
-        <th>Points</th>
-      </tr>
-    </thead>
-    <tbody id="tbody"></tbody>
-  </table>
+    <!-- Nav -->
+    <nav class="w-full py-3 px-6 fixed top-0 left-0 z-50">
+      <div class="max-w-7xl mx-auto flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <a href="index.html" class="flex items-center gap-3" style="text-decoration:none;">
+            <svg class="w-10 h-10" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="50" cy="50" r="48" fill="white" stroke="#97F09F" stroke-width="2"/>
+              <image href="https://upload.wikimedia.org/wikipedia/commons/1/1b/SmashBall.svg"
+                     x="25" y="25" width="50" height="50" style="filter: brightness(0);" />
+            </svg>
+            <h1 class="smash-title text-xl text-gray-900">Super Smash Bros Ultimate</h1>
+          </a>
+        </div>
 
-  <script>
-    async function loadLeaderboard() {
-      const res = await fetch("/leaderboard?season=2025");
-      const data = await res.json();
+        <div class="flex gap-6">
+          <a href="index.html" class="text-gray-700 hover:text-gray-900 font-medium transition">Home</a>
+          <a href="leaderboard.html" class="text-gray-900 font-bold">Leaderboard</a>
+          <a href="players.html" class="text-gray-700 hover:text-gray-900 font-medium transition">Players</a>
+        </div>
+      </div>
+    </nav>
 
-      const tbody = document.getElementById("tbody");
+    <!-- Content -->
+    <main class="pt-32 pb-20 px-6">
+      <div class="max-w-5xl mx-auto">
+        <h1 class="smash-title text-5xl mb-8 text-gray-900 text-center">Smash Ultimate Leaderboard</h1>
 
-      for (const row of data.leaderboard) {
-        const tr = document.createElement("tr");
-        tr.innerHTML = `
-          <td>${row.rank}</td>
-          <td>${row.tag}</td>
-          <td>${row.points}</td>
-        `;
-        tbody.appendChild(tr);
-      }
-    }
+        <table>
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Player</th>
+              <th>Region</th>
+              <th>Points</th>
+            </tr>
+          </thead>
+          <tbody id="players-body"></tbody>
+        </table>
+      </div>
+    </main>
 
-    loadLeaderboard(); // runs when page loads
-  </script>
+    <footer class="w-full py-8 px-6" style="background-color:#f5f5f7; border-top:1px solid #d2d2d7;">
+      <div class="max-w-7xl mx-auto text-center">
+        <p class="text-sm text-gray-600">© 2026 Smash Rankings</p>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- IMPORTANT: keep your existing script that fetches /leaderboard -->
+  <script src="script.js"></script>
 </body>
 </html>

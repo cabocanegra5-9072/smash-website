@@ -1,53 +1,109 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en" class="h-full">
 <head>
-  <title>Smash Rankings</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smash Rankings - Home</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    html, body { height: 100%; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+    .smash-title { font-weight: 700; letter-spacing: -0.5px; }
+    .hero-section { background: linear-gradient(180deg, #ffffff 0%, #f5f5f7 100%); }
+    .feature-card { transition: transform 0.3s ease, box-shadow 0.3s ease; background: #ffffff; cursor: pointer; }
+    .feature-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,0,0,0.1); }
+    nav { backdrop-filter: blur(20px); background: rgba(255,255,255,0.8); border-bottom: 1px solid rgba(0,0,0,0.1); }
+    .smash-logo { transition: all 0.3s ease; }
+    .smash-logo:hover { transform: scale(1.05); filter: drop-shadow(0 0 8px #97F09F) drop-shadow(0 0 12px #97F09F); }
+    .cta-button { transition: all 0.3s ease; }
+    .cta-button:hover { transform: scale(1.02); box-shadow: 0 8px 16px rgba(151,240,159,0.3); }
+  </style>
 </head>
 
-<body>
-  <nav>
-    <a href="index.html">Home</a> |
-    <a href="leaderboard.html">Leaderboard</a> |
-    <a href="players.html">Players</a>
-  </nav>
+<body class="h-full">
+  <div class="w-full h-full overflow-auto">
 
-  <!-- HOME -->
-  <section id="page-home">
-    <h1>My Smash Website</h1>
-    <p>This is my first test page for a Smash Ultimate ranking site.</p>
-  </section>
+    <!-- Nav -->
+    <nav class="w-full py-3 px-6 fixed top-0 left-0 z-50">
+      <div class="max-w-7xl mx-auto flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <svg class="smash-logo w-10 h-10" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="48" fill="white" stroke="#97F09F" stroke-width="2"/>
+            <image href="https://upload.wikimedia.org/wikipedia/commons/1/1b/SmashBall.svg"
+                   x="25" y="25" width="50" height="50" style="filter: brightness(0);" />
+          </svg>
+          <h1 class="smash-title text-xl text-gray-900">Super Smash Bros Ultimate</h1>
+        </div>
 
-  <!-- LEADERBOARD -->
-  <section id="page-leaderboard" style="display:none;">
-    <h1>Smash Ultimate Leaderboard</h1>
+        <div class="flex gap-6">
+          <a href="index.html" class="text-gray-900 font-bold">Home</a>
+          <a href="leaderboard.html" class="text-gray-700 hover:text-gray-900 font-medium transition">Leaderboard</a>
+          <a href="players.html" class="text-gray-700 hover:text-gray-900 font-medium transition">Players</a>
+        </div>
+      </div>
+    </nav>
 
-    <label>
-      Season:
-      <select id="seasonSelect">
-        <option value="2025" selected>2025</option>
-      </select>
-    </label>
+    <!-- Hero -->
+    <section class="hero-section w-full pt-32 pb-20 px-6" style="position: relative; overflow: hidden;">
+      <div class="max-w-4xl mx-auto text-center" style="position: relative; z-index: 1;">
+        <h2 class="smash-title text-6xl mb-6 text-gray-900">Ranked by Smashers for Smashers</h2>
+        <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto font-light">
+          A live ranking system for Smash Ultimate to build a more interconnected and competitive community
+        </p>
+        <a href="leaderboard.html" class="cta-button inline-block px-8 py-3 rounded-full font-medium text-white text-lg"
+           style="background-color:#97F09F; text-decoration:none;">
+          View Rankings
+        </a>
+      </div>
+    </section>
 
-    <table id="leaderboard" border="1" cellpadding="6">
-      <thead>
-        <tr>
-          <th>Rank</th>
-          <th>Player</th>
-          <th>Region</th>
-          <th>Points</th>
-        </tr>
-      </thead>
-      <tbody id="leaderboard-body"></tbody>
-    </table>
-  </section>
+    <!-- Features -->
+    <section class="w-full py-20 px-6" style="background-color:#fbfbfd;">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-  <!-- PLAYERS -->
-  <section id="page-players" style="display:none;">
-    <h1>Players</h1>
-    <div id="players-list">Loading...</div>
-  </section>
+          <a href="index.html" style="text-decoration:none;">
+            <div class="feature-card p-8 rounded-3xl border border-gray-200">
+              <div class="w-14 h-14 rounded-2xl mb-6 flex items-center justify-center" style="background-color:#97F09F;">
+                <span class="text-white font-bold text-xl">H</span>
+              </div>
+              <h3 class="smash-title text-2xl mb-3 text-gray-900">Home</h3>
+              <p class="text-gray-600 font-light">Return to the main dashboard and overview</p>
+            </div>
+          </a>
 
-  <script src="script.js"></script>
+          <a href="leaderboard.html" style="text-decoration:none;">
+            <div class="feature-card p-8 rounded-3xl border border-gray-200">
+              <div class="w-14 h-14 rounded-2xl mb-6 flex items-center justify-center" style="background-color:#97F09F;">
+                <span class="text-white font-bold text-xl">L</span>
+              </div>
+              <h3 class="smash-title text-2xl mb-3 text-gray-900">Leaderboard</h3>
+              <p class="text-gray-600 font-light">View top ranked players and tournament standings</p>
+            </div>
+          </a>
+
+          <a href="players.html" style="text-decoration:none;">
+            <div class="feature-card p-8 rounded-3xl border border-gray-200">
+              <div class="w-14 h-14 rounded-2xl mb-6 flex items-center justify-center" style="background-color:#97F09F;">
+                <span class="text-white font-bold text-xl">P</span>
+              </div>
+              <h3 class="smash-title text-2xl mb-3 text-gray-900">Players</h3>
+              <p class="text-gray-600 font-light">Browse all registered competitive players</p>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="w-full py-8 px-6" style="background-color:#f5f5f7; border-top:1px solid #d2d2d7;">
+      <div class="max-w-7xl mx-auto text-center">
+        <p class="text-sm text-gray-600">© 2026 Smash Rankings</p>
+      </div>
+    </footer>
+
+  </div>
 </body>
 </html>

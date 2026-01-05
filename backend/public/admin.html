@@ -30,6 +30,22 @@
 <div style="margin-top:12px;">
   <h3>Option C: Auto-fill tournaments for a year</h3>
 
+  <div style="margin-top:12px;">
+  <label>Year:</label>
+  <input id="autoYear" style="width:120px; padding:8px;" value="2025" />
+
+  <label style="margin-left:12px;">Min Attendees:</label>
+  <input id="minAttendees" style="width:120px; padding:8px;" value="128" />
+
+  <label style="margin-left:12px;">Past only:</label>
+  <select id="pastOnly" style="width:140px; padding:8px;">
+    <option value="true" selected>true</option>
+    <option value="false">false</option>
+  </select>
+
+  <button id="btnAutoFill" type="button" style="margin-left:12px;">Auto-Fill Year</button>
+</div>
+
   <label>Year:</label>
   <input id="autoYear" style="width:120px; padding:8px;" value="2025" />
 
@@ -384,6 +400,54 @@ document.getElementById("btnImport").onclick = async () => {
     setStatus("Error: " + String(e.message || e));
   }
 };
+
+window.addEventListener("DOMContentLoaded", () => {
+  const btn = document.getElementById("btnAutoFill");
+  console.log("btnAutoFill found:", btn);
+
+  if (!btn) return;
+
+  btn.onclick = async () => {
+    try {
+      const adminKey = (document.getElementById("adminKey").value || "").trim();
+      const year = Number((document.getElementById("autoYear").value || "").trim());
+      const minAttendees = Number((document.getElementById("minAttendees").value || "").trim()) || 0;
+      const past = document.getElementById("pastOnly").value;
+
+      if (!adminKey) return alert("Enter admin key first.");
+      if (!year) return alert("Enter a valid year.");
+
+      const url =
+        `/api/list-ultimate-tournaments` +
+        `?year=${encodeURIComponent(year)}` +
+        `&minAttendees=${encodeURIComponent(minAttendees)}` +
+        `&past=${encodeURIComponent(past)}` +
+        `&adminKey=${encodeURIComponent(adminKey)}`;
+
+      console.log("AutoFill fetch:", url);
+
+      const res = await fetch(url);
+      const data = await res.json();
+
+      console.log("AutoFill response:", res.status, data);
+
+      if (!res.ok) {
+        alert("Auto-fill error: " + (data.error || res.status));
+        return;
+      }
+
+      const textarea = document.getElementById("bulkUrls");
+      if (!textarea) return alert("bulkUrls textarea not found.");
+      textarea.value = (data.urls || []).join("\n");
+
+      alert(`✅ Auto-filled ${data.returned} tournaments`);
+    } catch (e) {
+      console.error(e);
+      alert("Auto-fill crashed: " + (e.message || e));
+    }
+  };
+});
+
 </script>
 </body>
 </html>

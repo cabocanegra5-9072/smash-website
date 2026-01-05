@@ -1038,8 +1038,8 @@ app.get("/api/list-ultimate-tournaments", async (req, res) => {
 
     const year = Number(req.query.year) || new Date().getFullYear();
     const past = req.query.past === "false" ? false : true; // default true
-    const perPage = Math.min(Number(req.query.perPage) || 50, 100);
-    const maxPages = Math.min(Number(req.query.maxPages) || 10, 50); // safety cap
+    const perPage = Math.min(Number(req.query.perPage) || 100, 100);
+    const maxPages = Math.min(Number(req.query.maxPages) || 50, 200);
     const minAttendees = Number(req.query.minAttendees) || 0;
 
     const afterDate = Math.floor(new Date(`${year}-01-01T00:00:00Z`).getTime() / 1000);
@@ -1071,16 +1071,14 @@ app.get("/api/list-ultimate-tournaments", async (req, res) => {
 
     // Filter + basic cleanup
     const filtered = all
-      .filter(t => (Number(t.numAttendees) || 0) >= minAttendees)
-      .filter(t => t.slug) // ensure usable
-      .map(t => ({
-        id: t.id,
-        name: t.name,
-        slug: t.slug,
-        startAt: t.startAt,
-        numAttendees: t.numAttendees,
-        isOnline: t.isOnline
-      }));
+  .filter(t => t.slug)
+  .map(t => ({
+    id: t.id,
+    name: t.name,
+    slug: t.slug,
+    startAt: t.startAt,
+    numAttendees: t.numAttendees ?? null
+  }));
 
     // Convert to URLs your admin can paste into Option B
     const urls = filtered.map(t => `https://www.start.gg/${t.slug}/events`);

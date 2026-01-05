@@ -71,6 +71,44 @@ async function startggQuery(query, variables) {
   return json.data;
 }
 
+let ULTIMATE_GAME_ID_CACHE = null;
+
+async function getUltimateVideogameId() {
+  if (ULTIMATE_GAME_ID_CACHE) return ULTIMATE_GAME_ID_CACHE;
+
+  // Try a few common names; whichever returns a match first wins.
+  const candidates = [
+    "Super Smash Bros. Ultimate",
+    "Super Smash Bros Ultimate",
+    "Smash Ultimate",
+    "SSBU"
+  ];
+
+  for (const name of candidates) {
+    const data = await startggQuery(GET_VIDEOGAMES_BY_NAME, {
+      perPage: 20,
+      page: 1,
+      name
+    });
+
+    const nodes = data?.videogames?.nodes || [];
+    // Pick the first node that looks like Ultimate
+    const best = nodes.find(v => String(v.name || "").toLowerCase().includes("ultimate"));
+    if (best?.id) {
+      ULTIMATE_GAME_ID_CACHE = best.id;
+      return best.id;
+    }
+
+    // If no “ultimate” match but there is any node, still take first as fallback
+    if (nodes[0]?.id) {
+      ULTIMATE_GAME_ID_CACHE = nodes[0].id;
+      return nodes[0].id;
+    }
+  }
+
+  throw new Error("Could not find Smash Ultimate videogameId from start.gg.");
+}
+
 const GET_EVENT = `
   query GetEvent($slug: String!) {
     event(slug: $slug) { id name }
@@ -732,21 +770,41 @@ function basePointsForPlacement(placement) {
 }
 
 function tierMultiplier(tier) {
-  const t = String(tier || "").toUpperCase().trim();
+  const raw = String(tier || "").trim().toUpperCase();
 
-  // Edit these however you want.
+  // Normalize common variations -> LumiRank tier codes
+  // (lets you accept "Supermajor", "Major", etc. without breaking old data)
+  const normalized = raw
+    .replace(/\s+/g, "")   // remove spaces
+    .replace(/SUPERPREMIER/g, "SP")
+    .replace(/PREMIER\+/g, "P+")
+    .replace(/SUPERMAJOR\+/g, "S+")
+    .replace(/SUPERMAJOR/g, "S")
+    .replace(/MAJOR\+/g, "A+")
+    .replace(/^MAJOR$/g, "A")
+    .replace(/NATIONAL|SUBMAJOR/g, "B+")
+    .replace(/SUPERREGIONAL/g, "B");
+
+  // LumiRank tier set: SP, P+, P, S+, S, A+, A, B+, B, C, D :contentReference[oaicite:2]{index=2}
+  // These multipliers are YOUR scoring weights (not LumiRank’s algorithm). Tune as you like.
   const multipliers = {
-    P: 1.0,
-    S: 0.85,
-    "SUPERMAJOR": 0.85,
-    "SUPER MAJOR": 0.85,
-    MAJOR: 0.75,
-    A: 0.6,
-    B: 0.45,
-    C: 0.3
+    "SP": 1.35,
+    "P+": 1.25,
+    "P":  1.10,
+    "S+": 1.00,
+    "S":  0.90,
+    "A+": 0.80,
+    "A":  0.70,
+    "B+": 0.60,
+    "B":  0.50,
+    "C":  0.35,
+    "D":  0.20
   };
 
-  return multipliers[t] ?? 0.5; // default mid-tier
+  // Back-compat (your old tiers)
+  if (normalized === "LOCAL") return 0.20;
+
+  return multipliers[normalized] ?? 0.50; // default mid-tier
 }
 
 let RESULTS_CACHE = [];
@@ -763,7 +821,7 @@ app.get("/leaderboard", (req, res) => {
     const season = req.query.season ? Number(req.query.season) : null;
 
     const players = loadPlayersFile();
-    const results = RESULTS_CACHE;
+    const results = loadResultsFile();
     const tournaments = loadTournamentsFile();
 
     // Indexes for fast joins
@@ -772,10 +830,15 @@ app.get("/leaderboard", (req, res) => {
 
     // Filter results by season (if provided)
     const filteredResults = results.filter((r) => {
-      if (!season) return true;
-      const t = tournamentById.get(r.tournamentId);
-      return t && Number(t.season) === season;
-    });
+  const t = tournamentById.get(r.tournamentId);
+  if (!t) return false;
+
+  // ✅ default include=true if missing
+  if (t.include === false) return false;
+
+  if (!season) return true;
+  return Number(t.season) === season;
+});
 
     // Aggregate points per player
     const totals = new Map(); // playerId -> { points, events, bestFinish }
@@ -879,6 +942,52 @@ app.get("/debug-tournaments", (req, res) => {
   }
 });
 
+const GET_VIDEOGAMES_BY_NAME = `
+  query VideogamesByName($perPage: Int!, $page: Int!, $name: String!) {
+    videogames(query: { perPage: $perPage, page: $page, filter: { name: $name } }) {
+      nodes { id name }
+      pageInfo { totalPages }
+    }
+  }
+`;
+
+const GET_TOURNAMENTS_BY_GAME_AND_DATE = `
+  query TournamentsByGameAndDate(
+    $perPage: Int!,
+    $page: Int!,
+    $videogameIds: [ID]!,
+    $afterDate: Timestamp,
+    $beforeDate: Timestamp,
+    $past: Boolean
+  ) {
+    tournaments(
+      query: {
+        perPage: $perPage
+        page: $page
+        filter: {
+          videogameIds: $videogameIds
+          afterDate: $afterDate
+          beforeDate: $beforeDate
+          past: $past
+        }
+      }
+    ) {
+      nodes {
+        id
+        name
+        slug
+        startAt
+        endAt
+        numAttendees
+        isOnline
+        countryCode
+        addrState
+      }
+      pageInfo { totalPages }
+    }
+  }
+`;
+
 const GET_TOURNAMENT_EVENTS = `
   query TournamentEvents($slug: String!) {
     tournament(slug: $slug) {
@@ -917,6 +1026,75 @@ app.get("/api/tournament-events", async (req, res) => {
       tournamentSlug,
       tournamentName: data.tournament?.name ?? null,
       events: data.tournament?.events ?? []
+    });
+  } catch (err) {
+    res.status(500).json({ error: String(err) });
+  }
+});
+
+app.get("/api/list-ultimate-tournaments", async (req, res) => {
+  try {
+    if (!requireAdmin(req)) return res.status(401).json({ error: "Unauthorized" });
+
+    const year = Number(req.query.year) || new Date().getFullYear();
+    const past = req.query.past === "false" ? false : true; // default true
+    const perPage = Math.min(Number(req.query.perPage) || 50, 100);
+    const maxPages = Math.min(Number(req.query.maxPages) || 10, 50); // safety cap
+    const minAttendees = Number(req.query.minAttendees) || 0;
+
+    const afterDate = Math.floor(new Date(`${year}-01-01T00:00:00Z`).getTime() / 1000);
+    const beforeDate = Math.floor(new Date(`${year + 1}-01-01T00:00:00Z`).getTime() / 1000);
+
+    const videogameId = await getUltimateVideogameId();
+
+    let page = 1;
+    let all = [];
+
+    while (page <= maxPages) {
+      const data = await startggQuery(GET_TOURNAMENTS_BY_GAME_AND_DATE, {
+        perPage,
+        page,
+        videogameIds: [videogameId],
+        afterDate,
+        beforeDate,
+        past
+      });
+
+      const nodes = data?.tournaments?.nodes || [];
+      all.push(...nodes);
+
+      const totalPages = data?.tournaments?.pageInfo?.totalPages || 1;
+      if (page >= totalPages) break;
+
+      page++;
+    }
+
+    // Filter + basic cleanup
+    const filtered = all
+      .filter(t => (Number(t.numAttendees) || 0) >= minAttendees)
+      .filter(t => t.slug) // ensure usable
+      .map(t => ({
+        id: t.id,
+        name: t.name,
+        slug: t.slug,
+        startAt: t.startAt,
+        numAttendees: t.numAttendees,
+        isOnline: t.isOnline
+      }));
+
+    // Convert to URLs your admin can paste into Option B
+    const urls = filtered.map(t => `https://www.start.gg/${t.slug}/events`);
+
+    res.json({
+      ok: true,
+      year,
+      past,
+      minAttendees,
+      videogameId,
+      fetched: all.length,
+      returned: filtered.length,
+      urls,
+      tournaments: filtered
     });
   } catch (err) {
     res.status(500).json({ error: String(err) });
@@ -1176,6 +1354,57 @@ app.post("/admin/rebuild-cache", async (req, res) => {
     if (!requireAdmin(req)) return res.status(401).json({ error: "Unauthorized" });
     await rebuildResultsCache();
     res.json({ ok: true, cache: CACHE_STATUS, resultsCacheCount: RESULTS_CACHE.length });
+  } catch (err) {
+    res.status(500).json({ error: String(err) });
+  }
+});
+
+app.post("/admin/exclude-by-tier", (req, res) => {
+  try {
+    if (!requireAdmin(req)) {
+      return res.status(401).json({ error: "Unauthorized" });
+    }
+
+    const { season, maxTier } = req.body || {};
+    if (!season) return res.status(400).json({ error: "Missing season" });
+    if (!maxTier) return res.status(400).json({ error: "Missing maxTier" });
+
+    // Tier order from lowest → highest importance
+    const tierOrder = ["D", "C", "B", "B+", "A", "A+", "S", "S+", "P", "P+", "SP"];
+    const maxIdx = tierOrder.indexOf(String(maxTier).toUpperCase());
+
+    if (maxIdx === -1) {
+      return res.status(400).json({ error: "Invalid tier" });
+    }
+
+    const file = path.join(DATA_DIR, "tournaments.json");
+    const tournaments = loadJsonArray(file);
+
+    let excluded = 0;
+
+    for (const t of tournaments) {
+      if (Number(t.season) === Number(season)) {
+        const idx = tierOrder.indexOf(String(t.tier || "").toUpperCase());
+
+        if (idx !== -1 && idx <= maxIdx) {
+          if (t.include !== false) {
+            t.include = false;
+            excluded++;
+          }
+        }
+      }
+    }
+
+    writeJsonPretty(file, tournaments);
+    rebuildResultsCache();
+
+    res.json({
+      ok: true,
+      season,
+      maxTier,
+      excluded,
+      note: "Tournaments updated and leaderboard cache rebuilt."
+    });
   } catch (err) {
     res.status(500).json({ error: String(err) });
   }

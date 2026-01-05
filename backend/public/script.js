@@ -34,6 +34,34 @@ async function initLeaderboardPage() {
   }
 }
 
+document.getElementById("btnAutoFill").onclick = async () => {
+  const adminKey = getAdminKey();
+  if (!adminKey) return alert("Enter admin key first.");
+
+  const year = Number(document.getElementById("autoYear").value.trim());
+  const minAttendees = Number(document.getElementById("minAttendees").value.trim()) || 0;
+  const past = document.getElementById("pastOnly").value;
+
+  setStatus("Fetching tournaments from start.gg…");
+
+  const res = await fetch(
+    `/api/list-ultimate-tournaments?year=${encodeURIComponent(year)}&minAttendees=${encodeURIComponent(minAttendees)}&past=${encodeURIComponent(past)}`,
+    { headers: { "X-Admin-Key": adminKey } }
+  );
+
+  const data = await res.json();
+  if (!res.ok) {
+    setStatus("Error: " + (data.error || res.status));
+    return;
+  }
+
+  // Fill textarea with URLs
+  const textarea = document.getElementById("bulkUrls");
+  textarea.value = (data.urls || []).join("\n");
+
+  setStatus(`✅ Auto-filled ${data.returned} tournaments. Now click "Load Events for All URLs", then "Import All".`);
+};
+
 // ---------- PLAYERS PAGE ----------
 async function initPlayersPage() {
   const tbody = document.getElementById("players-table-body");

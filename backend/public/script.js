@@ -35,31 +35,45 @@ async function initLeaderboardPage() {
 }
 
 document.getElementById("btnAutoFill").onclick = async () => {
-  const adminKey = getAdminKey();
-  if (!adminKey) return alert("Enter admin key first.");
+  const btnAutoFill = document.getElementById("btnAutoFill");
+if (btnAutoFill) {
+  btnAutoFill.onclick = async () => {
+    const adminKey = getAdminKey?.() || "";
+    if (!adminKey) return alert("Enter admin key first.");
 
-  const year = Number(document.getElementById("autoYear").value.trim());
-  const minAttendees = Number(document.getElementById("minAttendees").value.trim()) || 0;
-  const past = document.getElementById("pastOnly").value;
+    const yearEl = document.getElementById("autoYear");
+    const minEl = document.getElementById("minAttendees");
+    const pastEl = document.getElementById("pastOnly");
 
-  setStatus("Fetching tournaments from start.gg…");
+    const year = Number((yearEl?.value || "").trim());
+    const minAttendees = Number((minEl?.value || "").trim()) || 0;
+    const past = pastEl?.value || "true";
 
-  const res = await fetch(
-    `/api/list-ultimate-tournaments?year=${encodeURIComponent(year)}&minAttendees=${encodeURIComponent(minAttendees)}&past=${encodeURIComponent(past)}`,
-    { headers: { "X-Admin-Key": adminKey } }
-  );
+    // setStatus may not exist on non-admin pages, so guard it
+    if (typeof setStatus === "function") setStatus("Fetching tournaments from start.gg…");
 
-  const data = await res.json();
-  if (!res.ok) {
-    setStatus("Error: " + (data.error || res.status));
-    return;
-  }
+    const res = await fetch(
+      `/api/list-ultimate-tournaments?year=${encodeURIComponent(year)}&minAttendees=${encodeURIComponent(minAttendees)}&past=${encodeURIComponent(past)}`,
+      { headers: { "X-Admin-Key": adminKey } }
+    );
 
-  // Fill textarea with URLs
-  const textarea = document.getElementById("bulkUrls");
-  textarea.value = (data.urls || []).join("\n");
+    const data = await res.json();
+    if (!res.ok) {
+      if (typeof setStatus === "function") setStatus("Error: " + (data.error || res.status));
+      else alert("Error: " + (data.error || res.status));
+      return;
+    }
 
-  setStatus(`✅ Auto-filled ${data.returned} tournaments. Now click "Load Events for All URLs", then "Import All".`);
+    const textarea = document.getElementById("bulkUrls");
+    if (textarea) textarea.value = (data.urls || []).join("\n");
+
+    if (typeof setStatus === "function") {
+      setStatus(`✅ Auto-filled ${data.returned} tournaments. Now click "Load Events for All URLs", then "Import All".`);
+    } else {
+      alert(`✅ Auto-filled ${data.returned} tournaments.`);
+    }
+  };
+}
 };
 
 // ---------- PLAYERS PAGE ----------

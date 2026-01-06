@@ -34,8 +34,7 @@ async function initLeaderboardPage() {
   }
 }
 
-document.getElementById("btnAutoFill").onclick = async () => {
-  const btnAutoFill = document.getElementById("btnAutoFill");
+const btnAutoFill = document.getElementById("btnAutoFill");
 if (btnAutoFill) {
   btnAutoFill.onclick = async () => {
     const adminKey = getAdminKey?.() || "";
@@ -74,7 +73,6 @@ if (btnAutoFill) {
     }
   };
 }
-};
 
 // ---------- PLAYERS PAGE ----------
 async function initPlayersPage() {

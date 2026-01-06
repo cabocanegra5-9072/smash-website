@@ -1443,6 +1443,38 @@ app.post("/admin/rebuild-cache", async (req, res) => {
   }
 });
 
+app.post("/admin/reset-season", (req, res) => {
+  try {
+    if (!requireAdmin(req)) return res.status(401).json({ error: "Unauthorized" });
+
+    const season = Number(req.body?.season);
+    if (!season) return res.status(400).json({ error: "Missing season" });
+
+    const tournamentsPath = path.join(DATA_DIR, "tournaments.json");
+    const resultsPath = path.join(DATA_DIR, "results.json");
+
+    const tournaments = loadJsonArray(tournamentsPath);
+    const results = loadJsonArray(resultsPath);
+
+    const seasonTournamentIds = new Set(
+      tournaments.filter(t => Number(t.season) === season).map(t => t.tournamentId)
+    );
+
+    const before = results.length;
+    const kept = results.filter(r => !seasonTournamentIds.has(r.tournamentId));
+    const removed = before - kept.length;
+
+    writeJsonPretty(resultsPath, kept);
+
+    // rebuild cache so leaderboard updates immediately
+    rebuildResultsCache();
+
+    res.json({ ok: true, season, removedResults: removed, remainingResults: kept.length });
+  } catch (err) {
+    res.status(500).json({ error: String(err) });
+  }
+});
+
 app.post("/admin/exclude-by-tier", (req, res) => {
   try {
     if (!requireAdmin(req)) {

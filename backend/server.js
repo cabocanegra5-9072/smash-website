@@ -68,6 +68,11 @@ async function startggQuery(query, variables) {
     );
   }
 
+  // If start.gg rate limits, bubble up status 429 cleanly
+if (res.status === 429) {
+  throw new Error(`Rate limited (429). Try again in ~30-60s. ${JSON.stringify(json)}`);
+}
+
   return json.data;
 }
 
@@ -1002,6 +1007,46 @@ const GET_TOURNAMENT_EVENTS = `
   }
 `;
 
+const LIST_TOURNAMENTS_WITH_EVENTS_BY_DATE = `
+  query ListTournamentsWithEventsByDate($page: Int!, $perPage: Int!, $afterDate: Timestamp!, $beforeDate: Timestamp!, $past: Boolean!) {
+    tournaments(query: {
+      page: $page,
+      perPage: $perPage,
+      filter: { afterDate: $afterDate, beforeDate: $beforeDate, past: $past }
+    }) {
+      pageInfo { totalPages total }
+      nodes {
+        id
+        name
+        slug
+        startAt
+        events {
+          id
+          name
+          slug
+          videogame { id name }
+        }
+      }
+    }
+  }
+`;
+
+// Pull events for a single tournament so we can confirm Ultimate exists
+const TOURNAMENT_EVENTS_BY_SLUG = `
+  query TournamentEventsBySlug($slug: String!) {
+    tournament(slug: $slug) {
+      id
+      name
+      events {
+        id
+        name
+        slug
+        videogame { id name }
+      }
+    }
+  }
+`;
+
 function extractTournamentSlugFromUrl(url) {
   // supports:
   // https://www.start.gg/tournament/14-kagaribi-14-8/events
@@ -1036,65 +1081,67 @@ app.get("/api/list-ultimate-tournaments", async (req, res) => {
   try {
     if (!requireAdmin(req)) return res.status(401).json({ error: "Unauthorized" });
 
+    const ultimateGameId = await getUltimateVideogameId();
     const year = Number(req.query.year) || new Date().getFullYear();
-    const past = req.query.past === "false" ? false : true; // default true
-    const perPage = Math.min(Number(req.query.perPage) || 100, 100);
-    const maxPages = Math.min(Number(req.query.maxPages) || 50, 200);
-    const minAttendees = Number(req.query.minAttendees) || 0;
+    const past = req.query.past === "true"; // keep your UI the same
+    const perPage = Math.min(Number(req.query.perPage) || 50, 50); // 50 is safer than 100
+    const maxPages = Math.min(Number(req.query.maxPages) || 30, 200);
 
-    const afterDate = Math.floor(new Date(`${year}-01-01T00:00:00Z`).getTime() / 1000);
-    const beforeDate = Math.floor(new Date(`${year + 1}-01-01T00:00:00Z`).getTime() / 1000);
-
-    const videogameId = await getUltimateVideogameId();
+    // small buffer
+    const afterDate = Math.floor(new Date(`${year}-01-01T00:00:00Z`).getTime() / 1000) - (7 * 24 * 3600);
+    const beforeDate = Math.floor(new Date(`${year + 1}-01-01T00:00:00Z`).getTime() / 1000) + (7 * 24 * 3600);
 
     let page = 1;
-    let all = [];
+    let allUltimateTournamentUrls = [];
+    let checked = [];
 
     while (page <= maxPages) {
-      const data = await startggQuery(GET_TOURNAMENTS_BY_GAME_AND_DATE, {
+      const data = await startggQuery(LIST_TOURNAMENTS_WITH_EVENTS_BY_DATE, {
         perPage,
         page,
-        videogameIds: [videogameId],
         afterDate,
         beforeDate,
         past
       });
 
       const nodes = data?.tournaments?.nodes || [];
-      all.push(...nodes);
-
       const totalPages = data?.tournaments?.pageInfo?.totalPages || 1;
-      if (page >= totalPages) break;
 
+      for (const t of nodes) {
+        if (!t?.slug) continue;
+
+        const picked = pickUltimateSingles(t.events || [], ultimateGameId);
+        if (picked) {
+          allUltimateTournamentUrls.push(`https://www.start.gg/${t.slug}/events`);
+          checked.push({
+            name: t.name,
+            slug: t.slug,
+            startAt: t.startAt,
+            pickedEventName: picked.name,
+            pickedEventSlug: picked.slug
+          });
+        }
+      }
+
+      if (page >= totalPages) break;
       page++;
     }
 
-    // Filter + basic cleanup
-    const filtered = all
-  .filter(t => t.slug)
-  .map(t => ({
-    id: t.id,
-    name: t.name,
-    slug: t.slug,
-    startAt: t.startAt,
-    numAttendees: t.numAttendees ?? null
-  }));
-
-    // Convert to URLs your admin can paste into Option B
-    const urls = filtered.map(t => `https://www.start.gg/${t.slug}/events`);
+    const uniqueUrls = Array.from(new Set(allUltimateTournamentUrls));
 
     res.json({
       ok: true,
       year,
       past,
-      minAttendees,
-      videogameId,
-      fetched: all.length,
-      returned: filtered.length,
-      urls,
-      tournaments: filtered
+      perPage,
+      pagesFetched: page,
+      returned: uniqueUrls.length,
+      urls: uniqueUrls,
+      ultimateGameId,
+      sample: checked.slice(0, 30)
     });
   } catch (err) {
+    // pass through rate limit error clearly
     res.status(500).json({ error: String(err) });
   }
 });
@@ -1281,6 +1328,45 @@ async function rebuildResultsCache() {
   }
 }
 
+function isUltimateEvent(ev, ultimateGameId) {
+  // 1) Strongest signal: videogame.id match
+  const vgId = ev?.videogame?.id != null ? String(ev.videogame.id) : "";
+  if (vgId && ultimateGameId && vgId === String(ultimateGameId)) return true;
+
+  // 2) Fallback: videogame name
+  const vgName = String(ev?.videogame?.name || "").toLowerCase();
+  if (vgName.includes("super smash bros. ultimate")) return true;
+
+  // 3) Last-resort fallback: require BOTH smash + ultimate
+  const name = String(ev?.name || "").toLowerCase();
+  if (name.includes("smash") && name.includes("ultimate")) return true;
+
+  return false;
+}
+
+function pickUltimateSingles(events, ultimateGameId) {
+  if (!Array.isArray(events) || events.length === 0) return null;
+
+  // Filter to Smash Ultimate ONLY
+  const ult = events.filter(e => isUltimateEvent(e, ultimateGameId));
+  if (ult.length === 0) return null;
+
+  // Score for Singles preference
+  const scored = ult.map(e => {
+    const n = String(e.name || "").toLowerCase();
+    let s = 0;
+    if (n.includes("singles")) s += 10;
+    if (n.includes("1v1") || n.includes("1 v 1")) s += 5;
+    if (n.includes("doubles")) s -= 50;
+    if (n.includes("squad") || n.includes("crew")) s -= 50;
+    if (n.includes("amiibo")) s -= 50;
+    return { e, s };
+  });
+
+  scored.sort((a, b) => b.s - a.s);
+  return scored[0].e;
+}
+
 function upsertTournament({ tournamentId, season, tier, name, eventSlug }) {
   const tournamentsPath = path.join(DATA_DIR, "tournaments.json");
   const tournaments = loadJsonArray(tournamentsPath);
@@ -1422,6 +1508,20 @@ app.get("/debug-paths", (req, res) => {
     backendTournamentsPath: backT,
     backendTournamentsExists: fs.existsSync(backT),
   });
+});
+
+app.get("/api/tournaments", (req, res) => {
+  try {
+    if (!requireAdmin(req)) return res.status(401).json({ error: "Unauthorized" });
+
+    const tournaments = loadTournamentsFile();
+    // sort newest first (optional)
+    tournaments.sort((a, b) => (b.season || 0) - (a.season || 0));
+
+    res.json({ ok: true, count: tournaments.length, tournaments });
+  } catch (err) {
+    res.status(500).json({ error: String(err) });
+  }
 });
 
 rebuildResultsCache();

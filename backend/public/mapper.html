@@ -1,0 +1,253 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Player Mapper</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 16px; }
+    input, select { width: 720px; padding: 6px; margin: 4px 0; }
+    button { padding: 6px 10px; margin-left: 6px; }
+    table { border-collapse: collapse; margin-top: 12px; width: 100%; }
+    th, td { border: 1px solid #ccc; padding: 6px; text-align: left; }
+    th { background: #f5f5f5; }
+    .small { color: #666; font-size: 12px; }
+    .row { margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <h2>Player Mapper</h2>
+  <div class="small">
+    Goal: take unmapped start.gg Player IDs and add them into <code>data/players.json</code>.
+    This page pulls tournaments from <code>data/tournaments.json</code> so you don’t paste slugs.
+  </div>
+
+  <div class="row">
+    <div>Admin Key</div>
+    <input id="adminKey" placeholder="(from your .env)" />
+    <button id="btnSaveKey">Save Key</button>
+    <div class="small">Saved in localStorage.</div>
+  </div>
+
+  <div class="row">
+    <div>Select tournament</div>
+    <select id="tournamentSelect"></select>
+    <div class="small" id="tournamentMeta"></div>
+  </div>
+
+  <div class="row">
+    <button id="btnLoadUnmapped">Load Unmapped</button>
+    <button id="btnAutoAddAll">Auto Add All</button>
+    <button id="btnRebuildCache">Rebuild Cache</button>
+  </div>
+
+  <div id="status" style="margin-top:10px;"></div>
+
+  <table id="tbl" style="display:none;">
+    <thead>
+      <tr>
+        <th>Placement</th>
+        <th>GamerTag</th>
+        <th>startggPlayerId</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody id="body"></tbody>
+  </table>
+
+<script>
+const statusEl = document.getElementById("status");
+const tbl = document.getElementById("tbl");
+const body = document.getElementById("body");
+const tournamentSelect = document.getElementById("tournamentSelect");
+const tournamentMeta = document.getElementById("tournamentMeta");
+
+function setStatus(msg) { statusEl.textContent = msg; }
+
+function getAdminKey() {
+  return (document.getElementById("adminKey").value || "").trim();
+}
+
+// save/load key
+const adminKeyInput = document.getElementById("adminKey");
+const savedKey = localStorage.getItem("ADMIN_KEY");
+if (savedKey) adminKeyInput.value = savedKey;
+
+document.getElementById("btnSaveKey").onclick = () => {
+  const k = getAdminKey();
+  if (!k) return alert("Enter admin key first.");
+  localStorage.setItem("ADMIN_KEY", k);
+  alert("Saved.");
+  loadTournamentList();
+};
+
+let tournaments = []; // from backend
+
+async function loadTournamentList() {
+  const adminKey = getAdminKey();
+  if (!adminKey) {
+    setStatus("Enter Admin Key to load tournaments.");
+    return;
+  }
+
+  setStatus("Loading tournaments...");
+  tournamentSelect.innerHTML = "";
+
+  const res = await fetch(`/api/tournaments?adminKey=${encodeURIComponent(adminKey)}`);
+  const data = await res.json();
+  if (!res.ok) {
+    setStatus("Error loading tournaments: " + (data.error || res.status));
+    return;
+  }
+
+  tournaments = data.tournaments || [];
+  if (tournaments.length === 0) {
+    setStatus("No tournaments in data/tournaments.json yet. Import some first.");
+    return;
+  }
+
+  // sort: newest season first, then name
+  tournaments.sort((a, b) => {
+    const sa = Number(a.season || 0), sb = Number(b.season || 0);
+    if (sb !== sa) return sb - sa;
+    return String(a.name || "").localeCompare(String(b.name || ""));
+  });
+
+  for (const t of tournaments) {
+    const opt = document.createElement("option");
+    opt.value = t.tournamentId;
+    opt.textContent = `[${t.season}] ${t.name} — ${t.tier} — ${t.tournamentId}`;
+    tournamentSelect.appendChild(opt);
+  }
+
+  tournamentSelect.onchange = updateMeta;
+  updateMeta();
+  setStatus(`Loaded ${tournaments.length} tournaments.`);
+}
+
+function updateMeta() {
+  const tid = tournamentSelect.value;
+  const t = tournaments.find(x => x.tournamentId === tid);
+  if (!t) { tournamentMeta.textContent = ""; return; }
+  tournamentMeta.textContent = `eventSlug: ${t.eventSlug || "(missing)"} | tier: ${t.tier} | season: ${t.season}`;
+}
+
+function getSelectedTournament() {
+  const tid = tournamentSelect.value;
+  return tournaments.find(x => x.tournamentId === tid) || null;
+}
+
+async function loadUnmapped() {
+  const adminKey = getAdminKey();
+  if (!adminKey) return alert("Enter admin key first.");
+
+  const t = getSelectedTournament();
+  if (!t) return alert("Select a tournament first.");
+  if (!t.eventSlug) return alert("This tournament is missing eventSlug in tournaments.json.");
+
+  setStatus("Loading unmapped...");
+  body.innerHTML = "";
+  tbl.style.display = "none";
+
+  // your backend /unmapped wants: slug + tournamentId
+  const res = await fetch(`/unmapped?slug=${encodeURIComponent(t.eventSlug)}&tournamentId=${encodeURIComponent(t.tournamentId)}`);
+  const data = await res.json();
+
+  if (!res.ok) {
+    setStatus("Error: " + (data.error || res.status));
+    return;
+  }
+
+  setStatus(`Unmapped: ${data.unmappedCount}`);
+  tbl.style.display = "";
+
+  for (const p of data.unmapped) {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${p.placement}</td>
+      <td>${(p.gamerTag || p.entrantName || "")}</td>
+      <td>${p.startggPlayerId}</td>
+      <td>
+        <button class="add-btn"
+          data-id="${p.startggPlayerId}"
+          data-tag="${String(p.gamerTag || "").replace(/"/g,'&quot;')}"
+          onclick="addPlayer(this)">Add</button>
+      </td>
+    `;
+    body.appendChild(tr);
+  }
+}
+
+async function addPlayer(btn) {
+  const sid = Number(btn.getAttribute("data-id"));
+  const tag = btn.getAttribute("data-tag") || ("player_" + sid);
+  const region = "";
+
+  btn.disabled = true;
+  btn.textContent = "Adding...";
+
+  const res = await fetch("/add-player", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ startggPlayerId: sid, tag, region })
+  });
+
+  const data = await res.json();
+  if (!res.ok) {
+    btn.disabled = false;
+    btn.textContent = "Add";
+    alert("Error: " + (data.error || res.status));
+    return;
+  }
+
+  btn.textContent = "Added ✅";
+}
+
+async function autoAddAll() {
+  const buttons = Array.from(document.querySelectorAll("#body button.add-btn"));
+  if (buttons.length === 0) return alert("Load Unmapped first.");
+
+  const ok = confirm("Auto-add " + buttons.length + " players to players.json?");
+  if (!ok) return;
+
+  let added = 0, failed = 0;
+  setStatus("Auto-adding " + buttons.length + " players...");
+
+  for (const btn of buttons) {
+    try {
+      if (btn.disabled || btn.textContent.includes("✅")) continue;
+      await addPlayer(btn);
+      added++;
+    } catch {
+      failed++;
+    }
+  }
+
+  setStatus("Done. Added " + added + ", failed " + failed + ".");
+}
+
+// Rebuild cache (admin protected)
+async function rebuildCache() {
+  const adminKey = getAdminKey();
+  if (!adminKey) return alert("Enter admin key first.");
+
+  setStatus("Rebuilding cache...");
+  const res = await fetch(`/admin/rebuild-cache?adminKey=${encodeURIComponent(adminKey)}`, { method: "POST" });
+  const data = await res.json();
+
+  if (!res.ok) {
+    setStatus("Error rebuilding cache: " + (data.error || res.status));
+    return;
+  }
+  setStatus("✅ Cache rebuilt. resultsCacheCount=" + (data.resultsCacheCount || 0));
+}
+
+// wire buttons
+document.getElementById("btnLoadUnmapped").onclick = loadUnmapped;
+document.getElementById("btnAutoAddAll").onclick = autoAddAll;
+document.getElementById("btnRebuildCache").onclick = rebuildCache;
+
+// initial load
+if (savedKey) loadTournamentList();
+</script>
+</body>
+</html>

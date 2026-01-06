@@ -31357,5 +31357,645 @@
     "playerId": "p_papple",
     "tournamentId": "t_863935",
     "placement": 17
+  },
+  {
+    "playerId": "p_syrup",
+    "tournamentId": "t_849150",
+    "placement": 1
+  },
+  {
+    "playerId": "p_susu",
+    "tournamentId": "t_849150",
+    "placement": 2
+  },
+  {
+    "playerId": "p_player_95",
+    "tournamentId": "t_849150",
+    "placement": 4
+  },
+  {
+    "playerId": "p_liimac",
+    "tournamentId": "t_849150",
+    "placement": 5
+  },
+  {
+    "playerId": "p_player_64",
+    "tournamentId": "t_849150",
+    "placement": 5
+  },
+  {
+    "playerId": "p_yone_pi",
+    "tournamentId": "t_849150",
+    "placement": 7
+  },
+  {
+    "playerId": "p_sy_okpg",
+    "tournamentId": "t_849150",
+    "placement": 9
+  },
+  {
+    "playerId": "p_die",
+    "tournamentId": "t_849150",
+    "placement": 9
+  },
+  {
+    "playerId": "p_player_4",
+    "tournamentId": "t_849150",
+    "placement": 9
+  },
+  {
+    "playerId": "p_fu_a_suta",
+    "tournamentId": "t_849150",
+    "placement": 13
+  },
+  {
+    "playerId": "p_saboten",
+    "tournamentId": "t_849150",
+    "placement": 13
+  },
+  {
+    "playerId": "p_fentes",
+    "tournamentId": "t_849150",
+    "placement": 13
+  },
+  {
+    "playerId": "p_57",
+    "tournamentId": "t_849150",
+    "placement": 17
+  },
+  {
+    "playerId": "p_player_212",
+    "tournamentId": "t_849150",
+    "placement": 17
+  },
+  {
+    "playerId": "p_player_288",
+    "tournamentId": "t_849150",
+    "placement": 17
+  },
+  {
+    "playerId": "p_player_174",
+    "tournamentId": "t_849150",
+    "placement": 17
+  },
+  {
+    "playerId": "p_player_163",
+    "tournamentId": "t_849150",
+    "placement": 17
+  },
+  {
+    "playerId": "p_player_56",
+    "tournamentId": "t_849150",
+    "placement": 17
+  },
+  {
+    "playerId": "p_player_273",
+    "tournamentId": "t_849150",
+    "placement": 17
+  },
+  {
+    "playerId": "p_player_74",
+    "tournamentId": "t_849150",
+    "placement": 25
+  },
+  {
+    "playerId": "p_player_167",
+    "tournamentId": "t_849150",
+    "placement": 25
+  },
+  {
+    "playerId": "p_player_185",
+    "tournamentId": "t_849150",
+    "placement": 25
+  },
+  {
+    "playerId": "p_player_138",
+    "tournamentId": "t_849150",
+    "placement": 25
+  },
+  {
+    "playerId": "p_mercy",
+    "tournamentId": "t_849150",
+    "placement": 25
+  },
+  {
+    "playerId": "p_rei_ca",
+    "tournamentId": "t_849150",
+    "placement": 33
+  },
+  {
+    "playerId": "p_player_115",
+    "tournamentId": "t_849150",
+    "placement": 33
+  },
+  {
+    "playerId": "p_player_309",
+    "tournamentId": "t_849150",
+    "placement": 33
+  },
+  {
+    "playerId": "p_mtk",
+    "tournamentId": "t_849150",
+    "placement": 33
+  },
+  {
+    "playerId": "p_player_169",
+    "tournamentId": "t_849150",
+    "placement": 33
+  },
+  {
+    "playerId": "p_player_310",
+    "tournamentId": "t_849150",
+    "placement": 33
+  },
+  {
+    "playerId": "p_player_55",
+    "tournamentId": "t_849150",
+    "placement": 33
+  },
+  {
+    "playerId": "p_player_386",
+    "tournamentId": "t_849150",
+    "placement": 49
+  },
+  {
+    "playerId": "p_player_254",
+    "tournamentId": "t_849150",
+    "placement": 49
+  },
+  {
+    "playerId": "p_suzune",
+    "tournamentId": "t_849150",
+    "placement": 49
+  },
+  {
+    "playerId": "p_player_374",
+    "tournamentId": "t_849150",
+    "placement": 49
+  },
+  {
+    "playerId": "p_player_299",
+    "tournamentId": "t_849150",
+    "placement": 49
+  },
+  {
+    "playerId": "p_player_180",
+    "tournamentId": "t_849150",
+    "placement": 49
+  },
+  {
+    "playerId": "p_player_227",
+    "tournamentId": "t_849150",
+    "placement": 49
+  },
+  {
+    "playerId": "p_player_85",
+    "tournamentId": "t_849150",
+    "placement": 49
+  },
+  {
+    "playerId": "p_player_198",
+    "tournamentId": "t_849150",
+    "placement": 65
+  },
+  {
+    "playerId": "p_player_440",
+    "tournamentId": "t_849150",
+    "placement": 65
+  },
+  {
+    "playerId": "p_player_746",
+    "tournamentId": "t_849150",
+    "placement": 65
+  },
+  {
+    "playerId": "p_player_187",
+    "tournamentId": "t_849150",
+    "placement": 65
+  },
+  {
+    "playerId": "p_arvent",
+    "tournamentId": "t_849150",
+    "placement": 65
+  },
+  {
+    "playerId": "p_player_469",
+    "tournamentId": "t_849150",
+    "placement": 65
+  },
+  {
+    "playerId": "p_player_498",
+    "tournamentId": "t_849150",
+    "placement": 65
+  },
+  {
+    "playerId": "p_seiya",
+    "tournamentId": "t_849150",
+    "placement": 65
+  },
+  {
+    "playerId": "p_amafu",
+    "tournamentId": "t_849150",
+    "placement": 65
+  },
+  {
+    "playerId": "p_player_156",
+    "tournamentId": "t_849150",
+    "placement": 65
+  },
+  {
+    "playerId": "p_player_1111",
+    "tournamentId": "t_849150",
+    "placement": 65
+  },
+  {
+    "playerId": "p_player_860",
+    "tournamentId": "t_849150",
+    "placement": 65
+  },
+  {
+    "playerId": "p_player_576",
+    "tournamentId": "t_849150",
+    "placement": 65
+  },
+  {
+    "playerId": "p_player_419",
+    "tournamentId": "t_849150",
+    "placement": 97
+  },
+  {
+    "playerId": "p_player_27",
+    "tournamentId": "t_849150",
+    "placement": 97
+  },
+  {
+    "playerId": "p_sprict",
+    "tournamentId": "t_849150",
+    "placement": 97
+  },
+  {
+    "playerId": "p_player_297",
+    "tournamentId": "t_849150",
+    "placement": 97
+  },
+  {
+    "playerId": "p_sefalth",
+    "tournamentId": "t_849150",
+    "placement": 97
+  },
+  {
+    "playerId": "p_player_738",
+    "tournamentId": "t_849150",
+    "placement": 97
+  },
+  {
+    "playerId": "p_player_462",
+    "tournamentId": "t_849150",
+    "placement": 97
+  },
+  {
+    "playerId": "p_player_917",
+    "tournamentId": "t_849150",
+    "placement": 97
+  },
+  {
+    "playerId": "p_player_128",
+    "tournamentId": "t_849150",
+    "placement": 97
+  },
+  {
+    "playerId": "p_player_1166",
+    "tournamentId": "t_849150",
+    "placement": 3
+  },
+  {
+    "playerId": "p_seika",
+    "tournamentId": "t_849150",
+    "placement": 7
+  },
+  {
+    "playerId": "p_player_1167",
+    "tournamentId": "t_849150",
+    "placement": 9
+  },
+  {
+    "playerId": "p_player_1168",
+    "tournamentId": "t_849150",
+    "placement": 13
+  },
+  {
+    "playerId": "p_player_1169",
+    "tournamentId": "t_849150",
+    "placement": 17
+  },
+  {
+    "playerId": "p_player_1170",
+    "tournamentId": "t_849150",
+    "placement": 25
+  },
+  {
+    "playerId": "p_player_1171",
+    "tournamentId": "t_849150",
+    "placement": 25
+  },
+  {
+    "playerId": "p_player_1172",
+    "tournamentId": "t_849150",
+    "placement": 25
+  },
+  {
+    "playerId": "p_sora_2",
+    "tournamentId": "t_849150",
+    "placement": 33
+  },
+  {
+    "playerId": "p_van",
+    "tournamentId": "t_849150",
+    "placement": 33
+  },
+  {
+    "playerId": "p_player_1173",
+    "tournamentId": "t_849150",
+    "placement": 33
+  },
+  {
+    "playerId": "p_lila",
+    "tournamentId": "t_849150",
+    "placement": 33
+  },
+  {
+    "playerId": "p_player_1174",
+    "tournamentId": "t_849150",
+    "placement": 33
+  },
+  {
+    "playerId": "p_player_1175",
+    "tournamentId": "t_849150",
+    "placement": 33
+  },
+  {
+    "playerId": "p_manan",
+    "tournamentId": "t_849150",
+    "placement": 33
+  },
+  {
+    "playerId": "p_player_1176",
+    "tournamentId": "t_849150",
+    "placement": 33
+  },
+  {
+    "playerId": "p_player_1177",
+    "tournamentId": "t_849150",
+    "placement": 33
+  },
+  {
+    "playerId": "p_player_1178",
+    "tournamentId": "t_849150",
+    "placement": 49
+  },
+  {
+    "playerId": "p_slush",
+    "tournamentId": "t_849150",
+    "placement": 49
+  },
+  {
+    "playerId": "p_player_1179",
+    "tournamentId": "t_849150",
+    "placement": 49
+  },
+  {
+    "playerId": "p_player_1180",
+    "tournamentId": "t_849150",
+    "placement": 49
+  },
+  {
+    "playerId": "p_player_1181",
+    "tournamentId": "t_849150",
+    "placement": 49
+  },
+  {
+    "playerId": "p_altale",
+    "tournamentId": "t_849150",
+    "placement": 49
+  },
+  {
+    "playerId": "p_player_1182",
+    "tournamentId": "t_849150",
+    "placement": 49
+  },
+  {
+    "playerId": "p_f",
+    "tournamentId": "t_849150",
+    "placement": 49
+  },
+  {
+    "playerId": "p_player_1183",
+    "tournamentId": "t_849150",
+    "placement": 65
+  },
+  {
+    "playerId": "p_jibnya",
+    "tournamentId": "t_849150",
+    "placement": 65
+  },
+  {
+    "playerId": "p_player_1184",
+    "tournamentId": "t_849150",
+    "placement": 65
+  },
+  {
+    "playerId": "p_player_1185",
+    "tournamentId": "t_849150",
+    "placement": 65
+  },
+  {
+    "playerId": "p_sabo",
+    "tournamentId": "t_849150",
+    "placement": 65
+  },
+  {
+    "playerId": "p_player_1186",
+    "tournamentId": "t_849150",
+    "placement": 65
+  },
+  {
+    "playerId": "p_kusk",
+    "tournamentId": "t_849150",
+    "placement": 65
+  },
+  {
+    "playerId": "p_vert",
+    "tournamentId": "t_849150",
+    "placement": 65
+  },
+  {
+    "playerId": "p_player_1187",
+    "tournamentId": "t_849150",
+    "placement": 65
+  },
+  {
+    "playerId": "p_player_1188",
+    "tournamentId": "t_849150",
+    "placement": 65
+  },
+  {
+    "playerId": "p_player_1189",
+    "tournamentId": "t_849150",
+    "placement": 65
+  },
+  {
+    "playerId": "p_kamiyoi",
+    "tournamentId": "t_849150",
+    "placement": 65
+  },
+  {
+    "playerId": "p_player_1190",
+    "tournamentId": "t_849150",
+    "placement": 65
+  },
+  {
+    "playerId": "p_player_1191",
+    "tournamentId": "t_849150",
+    "placement": 65
+  },
+  {
+    "playerId": "p_player_1192",
+    "tournamentId": "t_849150",
+    "placement": 65
+  },
+  {
+    "playerId": "p_player_1193",
+    "tournamentId": "t_849150",
+    "placement": 65
+  },
+  {
+    "playerId": "p_pp",
+    "tournamentId": "t_849150",
+    "placement": 65
+  },
+  {
+    "playerId": "p_player_1194",
+    "tournamentId": "t_849150",
+    "placement": 65
+  },
+  {
+    "playerId": "p_player_1195",
+    "tournamentId": "t_849150",
+    "placement": 65
+  },
+  {
+    "playerId": "p_player_1196",
+    "tournamentId": "t_849150",
+    "placement": 97
+  },
+  {
+    "playerId": "p_az",
+    "tournamentId": "t_849150",
+    "placement": 97
+  },
+  {
+    "playerId": "p_player_1197",
+    "tournamentId": "t_849150",
+    "placement": 97
+  },
+  {
+    "playerId": "p_player_1198",
+    "tournamentId": "t_849150",
+    "placement": 97
+  },
+  {
+    "playerId": "p_player_1199",
+    "tournamentId": "t_849150",
+    "placement": 97
+  },
+  {
+    "playerId": "p_player_1200",
+    "tournamentId": "t_849150",
+    "placement": 97
+  },
+  {
+    "playerId": "p_tsubasa",
+    "tournamentId": "t_849150",
+    "placement": 97
+  },
+  {
+    "playerId": "p_lakia",
+    "tournamentId": "t_849150",
+    "placement": 97
+  },
+  {
+    "playerId": "p_player_1201",
+    "tournamentId": "t_849150",
+    "placement": 97
+  },
+  {
+    "playerId": "p_player_1202",
+    "tournamentId": "t_849150",
+    "placement": 97
+  },
+  {
+    "playerId": "p_misuzu",
+    "tournamentId": "t_849150",
+    "placement": 97
+  },
+  {
+    "playerId": "p_player_1203",
+    "tournamentId": "t_849150",
+    "placement": 97
+  },
+  {
+    "playerId": "p_player_1204",
+    "tournamentId": "t_849150",
+    "placement": 97
+  },
+  {
+    "playerId": "p_player_1205",
+    "tournamentId": "t_849150",
+    "placement": 97
+  },
+  {
+    "playerId": "p_player_1206",
+    "tournamentId": "t_849150",
+    "placement": 97
+  },
+  {
+    "playerId": "p_player_1207",
+    "tournamentId": "t_849150",
+    "placement": 97
+  },
+  {
+    "playerId": "p_player_1208",
+    "tournamentId": "t_849150",
+    "placement": 97
+  },
+  {
+    "playerId": "p_player_1209",
+    "tournamentId": "t_849150",
+    "placement": 97
+  },
+  {
+    "playerId": "p_player_1210",
+    "tournamentId": "t_849150",
+    "placement": 97
+  },
+  {
+    "playerId": "p_g",
+    "tournamentId": "t_849150",
+    "placement": 97
+  },
+  {
+    "playerId": "p_wataru",
+    "tournamentId": "t_849150",
+    "placement": 97
+  },
+  {
+    "playerId": "p_player_1211",
+    "tournamentId": "t_849150",
+    "placement": 97
+  },
+  {
+    "playerId": "p_nibaphogear",
+    "tournamentId": "t_849150",
+    "placement": 97
   }
 ]

@@ -302,5 +302,12 @@
     "tier": "B",
     "name": "(GTS) Genix's Turnabout Smash #17",
     "eventSlug": "tournament/gts-genix-s-turnabout-smash-17/event/turnier"
+  },
+  {
+    "tournamentId": "t_849150",
+    "season": 2026,
+    "tier": "B+",
+    "name": "第2回スマフェス",
+    "eventSlug": "tournament/2-156/event/sp-1on1"
   }
 ]

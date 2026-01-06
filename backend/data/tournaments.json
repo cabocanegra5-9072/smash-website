@@ -1,1 +1,226 @@
-[]
+[
+  {
+    "tournamentId": "t_695079",
+    "season": 2025,
+    "tier": "A+",
+    "name": "Luminosity Makes BIG Moves 2025",
+    "eventSlug": "tournament/luminosity-makes-big-moves-2025/event/ultimate-singles"
+  },
+  {
+    "tournamentId": "t_735875",
+    "season": 2025,
+    "tier": "A+",
+    "name": "マエスマ'TOP#1 / Maesuma’TOP#1",
+    "eventSlug": "tournament/top-1-maesuma-top-1-2/event/singles-tournament"
+  },
+  {
+    "tournamentId": "t_724262",
+    "season": 2025,
+    "tier": "A+",
+    "name": "西武撃 / Seibugeki #18",
+    "eventSlug": "tournament/seibugeki-18/event/singles"
+  },
+  {
+    "tournamentId": "t_745264",
+    "season": 2025,
+    "tier": "A+",
+    "name": "第55回スマバトSP",
+    "eventSlug": "tournament/55-sp-1/event/1on1"
+  },
+  {
+    "tournamentId": "t_716237",
+    "season": 2025,
+    "tier": "A+",
+    "name": "Genesis X2",
+    "eventSlug": "tournament/genesis-x2/event/ultimate-singles"
+  },
+  {
+    "tournamentId": "t_706171",
+    "season": 2025,
+    "tier": "A+",
+    "name": "Cavalier Clash 6 | $1300 POT BONUS",
+    "eventSlug": "tournament/cavalier-clash-6-1300-pot-bonus/event/ultimate-singles"
+  },
+  {
+    "tournamentId": "t_751119",
+    "season": 2025,
+    "tier": "A+",
+    "name": "九龍#15withスマバト15th anniversary",
+    "eventSlug": "tournament/15with-15th-anniversary/event/1on1"
+  },
+  {
+    "tournamentId": "t_772783",
+    "season": 2025,
+    "tier": "A+",
+    "name": "第57回スマバトSP",
+    "eventSlug": "tournament/57-sp-1/event/1on1"
+  },
+  {
+    "tournamentId": "t_793283",
+    "season": 2025,
+    "tier": "A+",
+    "name": "第59回スマバトSP",
+    "eventSlug": "tournament/59-sp-1/event/1on1"
+  },
+  {
+    "tournamentId": "t_726021",
+    "season": 2025,
+    "tier": "A+",
+    "name": "Battle of BC 7",
+    "eventSlug": "tournament/battle-of-bc-7-6/event/main-event-ultimate-singles"
+  },
+  {
+    "tournamentId": "t_762751",
+    "season": 2025,
+    "tier": "A+",
+    "name": "DELTA#10",
+    "eventSlug": "tournament/delta-10/event/singles"
+  },
+  {
+    "tournamentId": "t_684541",
+    "season": 2025,
+    "tier": "A+",
+    "name": "LVL UP EXPO 2025",
+    "eventSlug": "tournament/lvl-up-expo-2025/event/smash-ultimate-singles-starts-saturday-10-000-prize-pool"
+  },
+  {
+    "tournamentId": "t_755446",
+    "season": 2025,
+    "tier": "A+",
+    "name": "篝火#13/KAGARIBI#13",
+    "eventSlug": "tournament/13-kagaribi-13/event/singles"
+  },
+  {
+    "tournamentId": "t_767620",
+    "season": 2025,
+    "tier": "A+",
+    "name": "九龍-KOWLOON-#16",
+    "eventSlug": "tournament/kowloon-16/event/kowloon_sp"
+  },
+  {
+    "tournamentId": "t_754998",
+    "season": 2025,
+    "tier": "A+",
+    "name": "Uzes Symphonic Gaming Festival 2025",
+    "eventSlug": "tournament/uzes-symphonic-gaming-festival-2025/event/1v1-smash-ultimate"
+  },
+  {
+    "tournamentId": "t_731045",
+    "season": 2025,
+    "tier": "A+",
+    "name": "Comicpalooza Fight Club 2025",
+    "eventSlug": "tournament/comicpalooza-fight-club-2025-1/event/ultimate-singles-5-000-pot-bonus"
+  },
+  {
+    "tournamentId": "t_792750",
+    "season": 2025,
+    "tier": "A+",
+    "name": "DELTA#11",
+    "eventSlug": "tournament/delta-11-1/event/singles"
+  },
+  {
+    "tournamentId": "t_723270",
+    "season": 2025,
+    "tier": "A+",
+    "name": "Get On My Level: Forever - Canadian Fighting Game Championships",
+    "eventSlug": "tournament/get-on-my-level-forever-canadian-fighting-game-championships/event/super-smash-bros-ultimate-singles"
+  },
+  {
+    "tournamentId": "t_801962",
+    "season": 2025,
+    "tier": "A+",
+    "name": "第60回スマバトSP",
+    "eventSlug": "tournament/60-sp-1/event/1on1"
+  },
+  {
+    "tournamentId": "t_778070",
+    "season": 2025,
+    "tier": "A+",
+    "name": "S Factor 12",
+    "eventSlug": "tournament/s-factor-12-1/event/smash-bros-ultimate-singles"
+  },
+  {
+    "tournamentId": "t_777707",
+    "season": 2025,
+    "tier": "A+",
+    "name": "Supernova 2025",
+    "eventSlug": "tournament/supernova-2025/event/ultimate-1v1-singles"
+  },
+  {
+    "tournamentId": "t_801949",
+    "season": 2025,
+    "tier": "A+",
+    "name": "NAGOYA SSBU TOURNAMENT ”UltCore” 5th",
+    "eventSlug": "tournament/nagoya-ssbu-tournament-ultcore-5th/event/1on1-tournament"
+  },
+  {
+    "tournamentId": "t_785311",
+    "season": 2025,
+    "tier": "A+",
+    "name": "ウメブラSP12 / UmeburaSP12",
+    "eventSlug": "tournament/sp12-umeburasp12/event/singles"
+  },
+  {
+    "tournamentId": "t_744261",
+    "season": 2025,
+    "tier": "A+",
+    "name": "Riptide 2025",
+    "eventSlug": "tournament/riptide-2025-4/event/ultimate-singles"
+  },
+  {
+    "tournamentId": "t_817032",
+    "season": 2025,
+    "tier": "A+",
+    "name": "第62回スマバトSP",
+    "eventSlug": "tournament/62-sp-1/event/1on1"
+  },
+  {
+    "tournamentId": "t_787681",
+    "season": 2025,
+    "tier": "A+",
+    "name": "SmashMania 2025",
+    "eventSlug": "tournament/smashmania-2025/event/1v1-ssbu"
+  },
+  {
+    "tournamentId": "t_803413",
+    "season": 2025,
+    "tier": "A+",
+    "name": "Luminosity Makes Moves Miami 2025",
+    "eventSlug": "tournament/luminosity-makes-moves-miami-2025-1/event/ultimate-singles"
+  },
+  {
+    "tournamentId": "t_834041",
+    "season": 2025,
+    "tier": "A+",
+    "name": "第63回スマバトSP",
+    "eventSlug": "tournament/63-sp-1/event/1on1"
+  },
+  {
+    "tournamentId": "t_822447",
+    "season": 2025,
+    "tier": "A+",
+    "name": "篝火#14/KAGARIBI#14",
+    "eventSlug": "tournament/14-kagaribi-14-8/event/singles"
+  },
+  {
+    "tournamentId": "t_797422",
+    "season": 2025,
+    "tier": "A+",
+    "name": "Port Priority 9",
+    "eventSlug": "tournament/port-priority-9-10/event/ultimate-singles"
+  },
+  {
+    "tournamentId": "t_849103",
+    "season": 2025,
+    "tier": "A+",
+    "name": "IMPACT MAJOR#2",
+    "eventSlug": "tournament/impact-major-2/event/singles-tournament"
+  },
+  {
+    "tournamentId": "t_761326",
+    "season": 2025,
+    "tier": "A+",
+    "name": "95 Kings of Fields #5",
+    "eventSlug": "tournament/95-kings-of-fields-5/event/ultimate-singles"
+  }
+]

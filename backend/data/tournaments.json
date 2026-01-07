@@ -30,7 +30,7 @@
   {
     "tournamentId": "t_716237",
     "season": 2025,
-    "tier": "A+",
+    "tier": "SP",
     "name": "Genesis X2",
     "eventSlug": "tournament/genesis-x2/event/ultimate-singles"
   },
@@ -79,21 +79,21 @@
   {
     "tournamentId": "t_684541",
     "season": 2025,
-    "tier": "A+",
+    "tier": "P",
     "name": "LVL UP EXPO 2025",
     "eventSlug": "tournament/lvl-up-expo-2025/event/smash-ultimate-singles-starts-saturday-10-000-prize-pool"
   },
   {
     "tournamentId": "t_755446",
     "season": 2025,
-    "tier": "A+",
+    "tier": "SP",
     "name": "篝火#13/KAGARIBI#13",
     "eventSlug": "tournament/13-kagaribi-13/event/singles"
   },
   {
     "tournamentId": "t_767620",
     "season": 2025,
-    "tier": "A+",
+    "tier": "P+",
     "name": "九龍-KOWLOON-#16",
     "eventSlug": "tournament/kowloon-16/event/kowloon_sp"
   },
@@ -135,14 +135,14 @@
   {
     "tournamentId": "t_778070",
     "season": 2025,
-    "tier": "A+",
+    "tier": "P",
     "name": "S Factor 12",
     "eventSlug": "tournament/s-factor-12-1/event/smash-bros-ultimate-singles"
   },
   {
     "tournamentId": "t_777707",
     "season": 2025,
-    "tier": "A+",
+    "tier": "SP",
     "name": "Supernova 2025",
     "eventSlug": "tournament/supernova-2025/event/ultimate-1v1-singles"
   },
@@ -163,7 +163,7 @@
   {
     "tournamentId": "t_744261",
     "season": 2025,
-    "tier": "A+",
+    "tier": "P",
     "name": "Riptide 2025",
     "eventSlug": "tournament/riptide-2025-4/event/ultimate-singles"
   },
@@ -198,14 +198,14 @@
   {
     "tournamentId": "t_822447",
     "season": 2025,
-    "tier": "A+",
+    "tier": "SP",
     "name": "篝火#14/KAGARIBI#14",
     "eventSlug": "tournament/14-kagaribi-14-8/event/singles"
   },
   {
     "tournamentId": "t_797422",
     "season": 2025,
-    "tier": "A+",
+    "tier": "P",
     "name": "Port Priority 9",
     "eventSlug": "tournament/port-priority-9-10/event/ultimate-singles"
   },
